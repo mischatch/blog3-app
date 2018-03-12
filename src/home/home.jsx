@@ -1,8 +1,27 @@
 import React from 'react';
+import { db } from '../firebase';
 
-const Home = () =>
-  <div>
-    Home
-  </div>
+class Home extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
-  export default Home;
+  componentDidMount() {
+    const { onSetUsers } = this.props;
+    db.onceGetUsers().then(snapshot =>
+      onSetUsers(snapshot.val())
+    );
+  }
+
+  render(){
+    const { users } = this.props;
+    debugger
+    return(
+      <div>
+        Home
+      </div>
+    )
+  }
+}
+
+export default Home;

@@ -15,17 +15,13 @@ class SignUp extends React.Component {
 
     this.submitForm = this.submitForm.bind(this);
     this.showErrors = this.showErrors.bind(this);
-
-
   }
 
   submitForm(e){
-    debugger
     const { email, password, username } = this.state;
     const { history } = this.props;
     auth.doCreateUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-        debugger
         db.doCreateUser(authUser.uid, username, email)
           .then(() => {
             this.setState({ email: '', username: '', password: '', error: null, });

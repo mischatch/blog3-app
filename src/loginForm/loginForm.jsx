@@ -1,11 +1,11 @@
 import React from 'react';
-import { db, auth } from '../config/config';
-
+import { db, auth } from '../firebase';
 import { Link } from 'react-router-dom';
 
 
 class LoginForm extends React.Component {
   constructor(props){
+    debugger
     super(props);
 
     this.state = {
@@ -16,22 +16,20 @@ class LoginForm extends React.Component {
 
     this.submitForm = this.submitForm.bind(this);
     this.showErrors = this.showErrors.bind(this);
-
-    // this.db = firebase.database();
-    // this.auth = firebase.auth();
-
   }
 
-  submitForm(){
+  submitForm(e){
     const { email, password } = this.state;
     const { history } = this.props;
-    auth.signInWithEmailAndPassword(email, password)
+    auth.doSignInWithEmailAndPassword(email, password)
       .then(() => {
+        this.setState({ email: '', password: '', error: null });
         history.push('/'); //redirect home
       })
       .catch(err => {
         this.setState({ error: err });
       });
+      e.preventDefault();
   }
 
   showErrors(){
@@ -58,7 +56,7 @@ class LoginForm extends React.Component {
             value={this.state.email} />
           <input
             placeholder="password"
-            type="password" 
+            type="password"
             name="password"
             onChange={e => this.setState({'password': e.target.value})}
             value={this.state.password} />
