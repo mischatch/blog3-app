@@ -19,6 +19,7 @@ class LoginForm extends React.Component {
   }
 
   submitForm(e){
+    debugger
     const { email, password } = this.state;
     const { history } = this.props;
     auth.doSignInWithEmailAndPassword(email, password)

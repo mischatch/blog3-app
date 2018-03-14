@@ -4,8 +4,9 @@ const nullUser = Object.freeze({
   authUser: null,
 });
 
-const applySetAuthUser = (state, action) => ({ ...state,
-  authUser: action.authUser
+const applySetAuthUser = (state, action) => ({
+  ...state,
+  authUser: action.authUser,
 });
 
 
