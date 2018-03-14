@@ -14,9 +14,12 @@ const mapStateToProps = ({ session }) => {
 
 
 
-const mapDispatchToProps = (dispatch) => ({
-  onLogin: authUser => dispatch({ type: "RECEIVE_CURRENT_USER", authUser }),
-});
+const mapDispatchToProps = (dispatch) => {
+  debugger
+  return {
+    onLogin: authUser => dispatch({ type: "AUTH_USER_SET", authUser }),
+  };
+};
 
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));
