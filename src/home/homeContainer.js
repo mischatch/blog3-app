@@ -4,8 +4,9 @@ import Home from './home';
 
 
 const mapStateToProps = state => {
+    // debugger
     return {
-      users: state.userState.users,
+      users: state.users,
     };
 };
 
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default (mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
