@@ -10,13 +10,24 @@ import Navigation from './navigation';
 //     // errors: session.errors,
 //     session: session,
 //   };
+<<<<<<< HEAD
 };
+=======
+// };
+>>>>>>> 49c4255ff1c634ee8666b42f920790b53cd9ec0b
 
 
-const mapDispatchToProps = dispatch => {
-  return {
+// const mapDispatchToProps = dispatch => {
+//   return {
+//
+//   };
+// };
 
+<<<<<<< HEAD
   };
 };
 
 export default connect(mapDispatchToProps)(Navigation);
+=======
+// export default connect(mapDispatchToProps)(Navigation);
+>>>>>>> 49c4255ff1c634ee8666b42f920790b53cd9ec0b
