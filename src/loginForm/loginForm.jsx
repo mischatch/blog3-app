@@ -18,18 +18,33 @@ class LoginForm extends React.Component {
     this.showErrors = this.showErrors.bind(this);
   }
 
+  // submitForm(e){
+  //   debugger
+  //   const { email, password } = this.state;
+  //   const { history } = this.props;
+  //   auth.doSignInWithEmailAndPassword(email, password)
+  //     .then(() => {
+  //       this.setState({ email: '', password: '', error: null });
+  //       history.push('/'); //redirect home
+  //     })
+  //     .catch(err => {
+  //       this.setState({ error: err });
+  //     });
+  //     e.preventDefault();
+  // }
+
   submitForm(e){
-    debugger
     const { email, password } = this.state;
     const { history } = this.props;
-    auth.doSignInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState({ email: '', password: '', error: null });
-        history.push('/'); //redirect home
-      })
-      .catch(err => {
-        this.setState({ error: err });
-      });
+    debugger
+    this.props.login({ email, password })
+    .then(() => {
+      this.setState({ email: '', password: '', error: null });
+      history.push('/'); //redirect home
+    })
+    .catch(err => {
+      this.setState({ error: err });
+    });
       e.preventDefault();
   }
 

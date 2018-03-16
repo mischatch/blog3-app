@@ -2,6 +2,7 @@ import { auth } from '../firebase';
 import LoginForm from './loginForm';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { login } from '../actions/session_actions';
 
 
 
@@ -17,7 +18,7 @@ const mapStateToProps = ({ session }) => {
 const mapDispatchToProps = (dispatch) => {
   debugger
   return {
-    onLogin: authUser => dispatch({ type: "AUTH_USER_SET", authUser }),
+    login: authUser => dispatch(login(authUser)),
   };
 };
 
