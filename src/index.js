@@ -9,24 +9,15 @@ import 'milligram';
 import configureStore from './store';
 
 let store;
- if (window.currentUser) {
-   // debugger
-   const preloadedState = { session: { currentUser: window.currentUser , errors: [] }};
-   store = configureStore(preloadedState);
-   delete window.currentUser;
- } else {
-   // debugger
-   store = configureStore({});
- }
 
- const message = 'message';
- // console.log(store);
+store = configureStore({});
+
 
 
 
 
 ReactDOM.render(
-  <Provider store={store} message={message}>
+  <Provider store={store} >
     <App />
   </Provider>,
   document.getElementById('root')

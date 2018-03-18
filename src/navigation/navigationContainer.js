@@ -8,7 +8,6 @@ import { receiveCurrentUser } from '../actions/session_actions';
 
 
 const mapStateToProps = ( { session } ) => {
-  debugger
   return {
     loggedIn: Boolean(session.currentUser),
     errors: session.errors,
@@ -19,7 +18,6 @@ const mapStateToProps = ( { session } ) => {
 
 
 const mapDispatchToProps = dispatch => {
-  debugger
   return {
     logout: () => dispatch(logout()),
     onSetAuthUser: (authUser) => dispatch(receiveCurrentUser(authUser)),

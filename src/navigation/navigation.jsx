@@ -21,10 +21,12 @@ class Navigation extends React.Component{
 
   showLink(){
     if(!this.props.loggedIn){
-      debugger
-      return (<div><Link to="/login">Login</Link></div>);
+      if(this.props.history.location.pathname !== '/login'){
+        return (<div><Link to="/login">Login</Link></div>);
+      } else {
+        return (<div></div>)
+      }
     } else {
-      debugger
       return (
       <div>
         {this.props.session.currentUser.email}
@@ -35,7 +37,6 @@ class Navigation extends React.Component{
   }
 
   render(){
-    debugger
     return(
       <div>
         { this.showLink() }

@@ -6,7 +6,6 @@ import { login } from '../actions/session_actions';
 
 
 const mapStateToProps = ({ session }) => {
-  // debugger
   return {
     session: session,
   };
@@ -15,7 +14,6 @@ const mapStateToProps = ({ session }) => {
 
 
 const mapDispatchToProps = (dispatch) => {
-  // debugger
   return {
     login: (authUser) => dispatch(login(authUser)),
   };

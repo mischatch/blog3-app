@@ -30,7 +30,6 @@ export const login = ({ email, password }) => dispatch => {
 };
 
 export const logout = () => dispatch => {
-  debugger
   return (
     auth.doSignOut()
       .then(
