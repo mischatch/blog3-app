@@ -36,8 +36,9 @@ class LoginForm extends React.Component {
   submitForm(e){
     const { email, password } = this.state;
     const { history } = this.props;
+    const user = { email: email, password: password};
     debugger
-    this.props.login({ email, password })
+    this.props.login(user)
     .then(() => {
       this.setState({ email: '', password: '', error: null });
       history.push('/'); //redirect home

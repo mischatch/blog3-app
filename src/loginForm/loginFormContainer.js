@@ -18,7 +18,7 @@ const mapStateToProps = ({ session }) => {
 const mapDispatchToProps = (dispatch) => {
   debugger
   return {
-    login: authUser => dispatch(login(authUser)),
+    login: (authUser) => dispatch(login(authUser)),
   };
 };
 

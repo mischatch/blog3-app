@@ -1,9 +1,10 @@
-import React, { createStore } from 'react';
+import React from 'react';
+import { createStore } from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 // import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { Provider } from 'react-redux';
 import 'milligram';
 
 import configureStore from './store';
@@ -12,19 +13,23 @@ import { Router, hashHistory } from 'react-router';
 
 let store;
  if (window.currentUser) {
+   debugger
    const preloadedState = { session: { currentUser: window.currentUser , errors: [] }};
    store = configureStore(preloadedState);
    delete window.currentUser;
  } else {
+   debugger
    store = configureStore({});
  }
 
+ const message = 'message';
+ console.log(store);
 
 
 
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store} message={message}>
     <App />
   </Provider>,
   document.getElementById('root')

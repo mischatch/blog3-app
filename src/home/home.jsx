@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { db } from '../firebase';
+import { firebase, db } from '../firebase';
 
 class Home extends Component {
   constructor(props){
@@ -7,10 +7,12 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const { onSetUsers } = this.props;
-    db.onceGetUsers().then(snapshot =>
-      onSetUsers(snapshot.val())
-    );
+    const { onSetAuthUser } = this.props;
+    debugger
+
+    firebase.auth.onAuthStateChanged(authUser => {
+       authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
+       });
   }
 
   render(){

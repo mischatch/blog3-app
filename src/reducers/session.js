@@ -2,12 +2,12 @@ import merge from 'lodash/merge';
 import { RECEIVE_CURRENT_USER } from './../actions/session_actions';
 
 const nullUser = Object.freeze({
-  authUser: null,
+  currentUser: null,
 });
 
 const applySetAuthUser = (state, action) => ({
   ...state,
-  authUser: action.authUser,
+  authUser: action.currentUser,
 });
 
 
@@ -16,7 +16,9 @@ const SessionReducer = (state = nullUser, action) => {
   debugger
   switch(action.type) {
     case RECEIVE_CURRENT_USER : {
-      return applySetAuthUser(state, action);
+      return Object.assign({}, state, {
+                currentUser: action.currentUser
+            });
     }
     default:
       return state;

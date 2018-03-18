@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Home from './home';
+import { receiveCurrentUser } from '../actions/session_actions';
 
 
 
@@ -11,8 +12,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
+  debugger
   return{
-    onSetUsers: (users) => dispatch({ type: 'USERS_SET', users }),
+    onSetAuthUser: (authUser) => dispatch(receiveCurrentUser(authUser)),
   };
 };
 
