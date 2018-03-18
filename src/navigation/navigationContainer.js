@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { firebase, auth } from '../firebase';
+// import { firebase, auth } from '../firebase';
 import Navigation from './navigation';
-import { compose } from 'recompose';
+// import { compose } from 'recompose';
 import { logout } from '../actions/session_actions';
 import { receiveCurrentUser } from '../actions/session_actions';
 

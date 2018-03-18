@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import SessionReducer from './session';
-import UsersReducer from './users';
+// import UsersReducer from './users';
 
 
 

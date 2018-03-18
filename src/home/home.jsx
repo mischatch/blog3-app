@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { firebase, db } from '../firebase';
+import { firebase } from '../firebase';
 
 class Home extends Component {
   constructor(props){
@@ -15,7 +15,7 @@ class Home extends Component {
   }
 
   render(){
-    const { users } = this.props;
+    // const { users } = this.props;
     return(
       <div>
         Home
