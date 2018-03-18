@@ -21,19 +21,22 @@ class Navigation extends React.Component{
   //   debugger
   // }
 
-  handleLogout(){
+  handleLogout(e){
+    // e.preventDefault()
+    console.log('taptaptaptaptaptaptaptaptaptaptaptaptap!');
     debugger
     const { history } = this.props;
     this.props.logout()
     .then(
       () => {
-        history.push('/');
+        history.push('/login');
       });
 
   }
 
   showLink(){
     if(!this.props.loggedIn){
+      debugger
       return (<div><Link to="/login">Login</Link></div>);
     } else {
       debugger
@@ -41,7 +44,7 @@ class Navigation extends React.Component{
       <div>
         {this.props.session.currentUser.email}
       <br/>
-        <button type="button" onSubmit={this.handleLogout}>Logout</button>
+      <button type="submit" onClick={this.props.logout}>Logout</button>
       </div>)
     }
   }
