@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { auth } from '../firebase';
+import { firebase, auth } from '../firebase';
 import Navigation from './navigation';
 import { compose } from 'recompose';
+import { logout } from '../actions/session_actions';
+import { receiveCurrentUser } from '../actions/session_actions';
 
-const mapStateToProps = ({ session }) => {
+
+const mapStateToProps = ( { session } ) => {
   debugger
   return {
     loggedIn: Boolean(session.currentUser),
@@ -15,11 +18,13 @@ const mapStateToProps = ({ session }) => {
 
 
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  debugger
+  return {
+    logout: () => dispatch(logout()),
+    onSetAuthUser: (authUser) => dispatch(receiveCurrentUser(authUser)),
+  };
+};
 
 
-export default connect(mapStateToProps)(Navigation);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navigation));

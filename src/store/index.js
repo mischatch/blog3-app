@@ -4,7 +4,7 @@ import rootReducer from '../reducers/index';
 
 
 const store = (preloadedState = {}) => {
-  debugger
+  // debugger
   return (
     createStore(
       rootReducer,

@@ -1,5 +1,4 @@
 import React from 'react';
-import { createStore } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 // import './index.css';
@@ -9,21 +8,19 @@ import 'milligram';
 
 import configureStore from './store';
 
-import { Router, hashHistory } from 'react-router';
-
 let store;
  if (window.currentUser) {
-   debugger
+   // debugger
    const preloadedState = { session: { currentUser: window.currentUser , errors: [] }};
    store = configureStore(preloadedState);
    delete window.currentUser;
  } else {
-   debugger
+   // debugger
    store = configureStore({});
  }
 
  const message = 'message';
- console.log(store);
+ // console.log(store);
 
 
 

@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  debugger
+  // debugger
   return{
     onSetAuthUser: (authUser) => dispatch(receiveCurrentUser(authUser)),
   };

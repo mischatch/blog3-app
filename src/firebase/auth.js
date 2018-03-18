@@ -6,14 +6,13 @@ export const doCreateUserWithEmailAndPassword = (email, password) =>
 
   // Sign In
 export const doSignInWithEmailAndPassword = (email, password) => {
-  debugger
   return auth.signInWithEmailAndPassword(email, password);
 };
 
   // Sign out
-// export const doSignOut = () =>
-//   auth.signOut();
-//
+export const doSignOut = () =>
+  auth.signOut();
+
 //   // Password Reset
 // export const doPasswordReset = (email) =>
 //   auth.sendPasswordResetEmail(email);

@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
     const { email, password } = this.state;
     const { history } = this.props;
     const user = { email: email, password: password};
-    debugger
+    // debugger
     this.props.login(user)
     .then(() => {
       this.setState({ email: '', password: '', error: null });

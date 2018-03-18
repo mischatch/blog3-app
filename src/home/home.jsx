@@ -8,7 +8,6 @@ class Home extends Component {
 
   componentDidMount() {
     const { onSetAuthUser } = this.props;
-    debugger
 
     firebase.auth.onAuthStateChanged(authUser => {
        authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
@@ -17,7 +16,6 @@ class Home extends Component {
 
   render(){
     const { users } = this.props;
-    debugger
     return(
       <div>
         Home

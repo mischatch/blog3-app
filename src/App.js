@@ -8,13 +8,13 @@ import NotFound from './404/notFound';
 import './App.css';
 import store from './store';
 
-const Store = store();
+const test = 'test';
 
 const App = () =>
 
       <Router>
         <div>
-          <NavigationContainer />
+          <NavigationContainer test={test}/>
           <h1>Blog</h1>
           <Switch>
             <Route exact path='/' component={HomeContainer} />
