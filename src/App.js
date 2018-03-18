@@ -6,6 +6,9 @@ import HomeContainer from './home/homeContainer';
 import NavigationContainer from './navigation/navigationContainer';
 import NotFound from './404/notFound';
 import './App.css';
+import store from './store';
+
+const Store = store();
 
 const App = () =>
 
