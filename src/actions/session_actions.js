@@ -1,4 +1,4 @@
-import { auth } from '../firebase';
+import { db, auth } from '../firebase';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
@@ -35,5 +35,14 @@ export const logout = () => dispatch => {
       .then(
         user => dispatch(receiveCurrentUser(null))
       )
+  );
+};
+
+export const signup = ({ email, password}) => dispatch => {
+  return(
+    auth.doCreateUserWithEmailAndPassword(email, password)
+    .then((authUser) => {
+      db.doCreateUser(authUser.uid, username, email)
+    })
   );
 };
