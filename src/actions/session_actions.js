@@ -38,11 +38,11 @@ export const logout = () => dispatch => {
   );
 };
 
-export const signup = ({ email, password}) => dispatch => {
+export const signup = ({ email, password, username }) => dispatch => {
   return(
     auth.doCreateUserWithEmailAndPassword(email, password)
     .then((authUser) => {
-      db.doCreateUser(authUser.uid, username, email)
+      db.doCreateUser(authUser.uid, username, email);
     })
   );
 };

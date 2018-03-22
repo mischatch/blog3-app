@@ -17,25 +17,58 @@ class SignUp extends React.Component {
     this.showErrors = this.showErrors.bind(this);
   }
 
+  // submitForm(e){
+  //   const { email, password, username } = this.state;
+  //   const { history } = this.props;
+  //   auth.doCreateUserWithEmailAndPassword(email, password)
+  //     .then((authUser) => {
+  //       db.doCreateUser(authUser.uid, username, email)
+  //         .then(() => {
+  //           this.setState({ email: '', username: '', password: '', error: null, });
+  //           history.push('/'); //redirect home
+  //         })
+  //         .catch(err => {
+  //           this.setState({ error: err });
+  //         });
+  //     })
+  //     .catch(err => {
+  //       this.setState({ error: err });
+  //     });
+  //
+  //     e.preventDefault();
+  // }
+
   submitForm(e){
     const { email, password, username } = this.state;
     const { history } = this.props;
-    auth.doCreateUserWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        db.doCreateUser(authUser.uid, username, email)
-          .then(() => {
-            this.setState({ email: '', username: '', password: '', error: null, });
-            history.push('/'); //redirect home
-          })
-          .catch(err => {
-            this.setState({ error: err });
-          });
+    const user = { email: email, password: password, username: username};
+    this.props.signup(user)
+      .then(() => {
+        this.setState({ email: '', username: '', password: '', error: null, });
+        history.push('/'); //redirect home
       })
       .catch(err => {
         this.setState({ error: err });
       });
 
+
       e.preventDefault();
+    // auth.doCreateUserWithEmailAndPassword(email, password)
+    //   .then((authUser) => {
+    //     db.doCreateUser(authUser.uid, username, email)
+    //       .then(() => {
+    //         this.setState({ email: '', username: '', password: '', error: null, });
+    //         history.push('/'); //redirect home
+    //       })
+    //       .catch(err => {
+    //         this.setState({ error: err });
+    //       });
+    //   })
+    //   .catch(err => {
+    //     this.setState({ error: err });
+    //   });
+    //
+    //   e.preventDefault();
   }
 
   showErrors(){
@@ -48,7 +81,7 @@ class SignUp extends React.Component {
 
   render(){
     const { email, password, error } = this.state;
-    // const isInvalid = password === '' || email === '';
+    const isInvalid = password === '' || email === '';
 
     return (
       <div>
