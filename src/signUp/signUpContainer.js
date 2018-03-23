@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SignUp from './signUp';
+import { signup } from '../actions/session_actions'
 
-// const mapStateToProps = state => {
-//
-// };
+const mapStateToProps = state => {
+  return {
+    state: state,
+  };
+};
 
 
 const mapDispatchToProps = (dispatch) => {
@@ -13,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(mapDispatchToProps)(SignUp));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp));

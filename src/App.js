@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import LoginFormContainer from './loginForm/loginFormContainer';
-import SignUp from './signUp/signUp';
+import SignUpContainer from './signUp/signUpContainer';
 import HomeContainer from './home/homeContainer';
 import NavigationContainer from './navigation/navigationContainer';
 import NotFound from './404/notFound';
@@ -18,7 +18,7 @@ const App = () =>
           <Switch>
             <Route exact path='/' component={HomeContainer} />
             <Route exact path='/login' component={LoginFormContainer} />
-            <Route exact path='/signup' component={SignUp} />
+            <Route exact path='/signup' component={SignUpContainer} />
             <Route component={NotFound} />
           </Switch>
         </div>

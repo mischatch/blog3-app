@@ -42,6 +42,7 @@ class SignUp extends React.Component {
     const { email, password, username } = this.state;
     const { history } = this.props;
     const user = { email: email, password: password, username: username};
+    debugger
     this.props.signup(user)
       .then(() => {
         this.setState({ email: '', username: '', password: '', error: null, });
@@ -105,7 +106,7 @@ class SignUp extends React.Component {
             name="password"
             onChange={e => this.setState({'password': e.target.value})}
             value={this.state.password} />
-          <button  type="submit">Login</button>
+          <button  type="submit">Sign Up</button>
         </form>
         <div>
           {this.showErrors()}
