@@ -16,7 +16,6 @@ class Navigation extends React.Component{
   // }
 
   // componentWillReceiveProps(newProps){
-  //   debugger
   // }
 
   showLink(){

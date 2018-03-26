@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import SignUp from './signUp';
-import { signup } from '../actions/session_actions';
+import Profile from './profile';
 
 const mapStateToProps = state => {
   return {
@@ -12,8 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: authUser => dispatch(signup(authUser)),
+    changePass: authUser => dispatch(changePass(authUser)),
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));
