@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Profile from './profile';
+import { changePass } from '../actions/session_actions';
 
 const mapStateToProps = state => {
   return {
@@ -11,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changePass: authUser => dispatch(changePass(authUser)),
+    changePass: newPass => dispatch(changePass(newPass)),
   };
 };
 

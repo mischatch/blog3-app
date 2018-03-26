@@ -4,6 +4,7 @@ import LoginFormContainer from './loginForm/loginFormContainer';
 import SignUpContainer from './signUp/signUpContainer';
 import HomeContainer from './home/homeContainer';
 import NavigationContainer from './navigation/navigationContainer';
+import ProfileContainer from './profile/profileContainer';
 import NotFound from './404/notFound';
 import './App.css';
 
@@ -19,6 +20,7 @@ const App = () =>
             <Route exact path='/' component={HomeContainer} />
             <Route exact path='/login' component={LoginFormContainer} />
             <Route exact path='/signup' component={SignUpContainer} />
+            <Route exact path='/profile' component={ProfileContainer} />
             <Route component={NotFound} />
           </Switch>
         </div>

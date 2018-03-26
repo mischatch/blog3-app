@@ -41,8 +41,17 @@ export const logout = () => dispatch => {
 export const signup = ({ email, password, username }) => dispatch => {
   return(
     auth.doCreateUserWithEmailAndPassword(email, password)
-    .then((authUser) => {
-      db.doCreateUser(authUser.uid, username, email);
-    })
+      .then((authUser) => {
+        db.doCreateUser(authUser.uid, username, email);
+      })
+  );
+};
+
+export const changePass = (newPass) => dispatch => {
+  return (
+    auth.doPasswordUpdate(newPass)
+      .then(
+        user => dispatch(receiveCurrentUser(user))
+      )
   );
 };
