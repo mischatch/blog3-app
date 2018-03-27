@@ -6,6 +6,7 @@ class Navigation extends React.Component{
     super(props);
 
     this.showLink = this.showLink.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   // componentDidMount(){
@@ -17,6 +18,16 @@ class Navigation extends React.Component{
 
   // componentWillReceiveProps(newProps){
   // }
+
+  logout(e){
+    e.preventDefault();
+
+    this.props.logout()
+      .then(() => {
+        this.props.history.push('/');
+      });
+  }
+
 
   showLink(){
     if(!this.props.loggedIn){
@@ -30,7 +41,7 @@ class Navigation extends React.Component{
       <div>
         {this.props.session.currentUser.email}
       <br/>
-      <button type="submit" onClick={this.props.logout}>Logout</button>
+      <button type="submit" onClick={this.logout}>Logout</button>
       </div>)
     }
   }

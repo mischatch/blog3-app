@@ -50,7 +50,7 @@ class Profile extends React.Component {
           type="password"
           placeholder="Confirm New Password"
         />
-        <button disabled={isInvalid} type="submit">  Reset My Password  </button>
+      <button disabled={isInvalid} type="submit">  Change Password  </button>
 
           { error && <p>{error.message}</p> }
 
