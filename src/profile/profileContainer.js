@@ -6,6 +6,7 @@ import { changePass } from '../actions/session_actions';
 const mapStateToProps = state => {
   return {
     state: state,
+    loggedIn: Boolean(state.session.currentUser),
   };
 };
 
