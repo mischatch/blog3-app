@@ -46,8 +46,13 @@ export const signup = ({ email, password, username }) => dispatch => {
 };
 
 export const changePass = (newPass) => dispatch => {
-  debugger
   return (
     auth.doPasswordUpdate(newPass)
+  );
+};
+
+export const resetPass = (email) => dispatch => {
+  return (
+    auth.doPasswordReset(email)
   );
 };

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Profile from './profile';
-import { changePass, login } from '../actions/session_actions';
+import { changePass, resetPass, login } from '../actions/session_actions';
 
 const mapStateToProps = ({ session }) => {
   debugger
@@ -15,6 +15,7 @@ const mapStateToProps = ({ session }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     changePass: newPass => dispatch(changePass(newPass)),
+    resetPass: email => dispatch(resetPass(email)),
     login: authUser => dispatch(login(authUser)),
   };
 };
