@@ -6,12 +6,10 @@ import { receiveCurrentUser } from '../actions/session_actions';
 
 
 const mapStateToProps = ( { session } ) => {
-  debugger
   return {
     loggedIn: Boolean(session.currentUser),
     currentUser: session.currentUser,
     errors: session.errors,
-    session: session,
   };
 };
 

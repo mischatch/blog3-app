@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
 
     return (
       <div>
-        <h3>LOGIN</h3>
+        <h3>Login</h3>
         <form onSubmit={this.submitForm}>
           <input
             placeholder="email"

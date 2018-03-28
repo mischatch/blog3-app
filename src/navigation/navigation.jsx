@@ -33,16 +33,24 @@ class Navigation extends React.Component{
   showLink(){
     if(!this.props.loggedIn){
       if(this.props.history.location.pathname !== '/login'){
-        return (<div><Link to="/login">Login</Link></div>);
+        return (<div>
+                  <button className="button button-outline">
+                    <Link to="/login">Login</Link>
+                  </button>
+                </div>);
       } else {
         return (<div></div>)
       }
     } else {
       return (
       <div>
-        {this.props.currentUser.email}
-      <br/>
-      <button type="submit" onClick={this.logout}>Logout</button>
+        <button className="button button-outline" type="submit" onClick={this.logout}>Logout</button>
+        <span>   </span>
+        <span>{this.props.currentUser.email}</span>
+        <br/>
+        <Link to='/profile'>Profile</Link>
+        <br/>
+        <Link to='/'>Home</Link>
       </div>)
     }
   }

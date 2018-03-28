@@ -1,5 +1,4 @@
 import React from 'react';
-import { auth, db } from '../firebase';
 
 
 class SignUp extends React.Component {
@@ -17,32 +16,11 @@ class SignUp extends React.Component {
     this.showErrors = this.showErrors.bind(this);
   }
 
-  // submitForm(e){
-  //   const { email, password, username } = this.state;
-  //   const { history } = this.props;
-  //   auth.doCreateUserWithEmailAndPassword(email, password)
-  //     .then((authUser) => {
-  //       db.doCreateUser(authUser.uid, username, email)
-  //         .then(() => {
-  //           this.setState({ email: '', username: '', password: '', error: null, });
-  //           history.push('/'); //redirect home
-  //         })
-  //         .catch(err => {
-  //           this.setState({ error: err });
-  //         });
-  //     })
-  //     .catch(err => {
-  //       this.setState({ error: err });
-  //     });
-  //
-  //     e.preventDefault();
-  // }
 
   submitForm(e){
     const { email, password, username } = this.state;
     const { history } = this.props;
     const user = { email: email, password: password, username: username};
-    debugger
     this.props.signup(user)
       .then(() => {
         this.setState({ email: '', username: '', password: '', error: null, });
@@ -51,25 +29,7 @@ class SignUp extends React.Component {
       .catch(err => {
         this.setState({ error: err });
       });
-
-
       e.preventDefault();
-    // auth.doCreateUserWithEmailAndPassword(email, password)
-    //   .then((authUser) => {
-    //     db.doCreateUser(authUser.uid, username, email)
-    //       .then(() => {
-    //         this.setState({ email: '', username: '', password: '', error: null, });
-    //         history.push('/'); //redirect home
-    //       })
-    //       .catch(err => {
-    //         this.setState({ error: err });
-    //       });
-    //   })
-    //   .catch(err => {
-    //     this.setState({ error: err });
-    //   });
-    //
-    //   e.preventDefault();
   }
 
   showErrors(){
