@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
+import { firebase } from '../firebase';
 
 class Navigation extends React.Component{
   constructor(props){
@@ -9,12 +10,12 @@ class Navigation extends React.Component{
     this.logout = this.logout.bind(this);
   }
 
-  // componentDidMount(){
-  //   const { onSetAuthUser } = this.props;
-  //   firebase.auth.onAuthStateChanged(authUser => {
-  //      authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
-  //      });
-  // }
+  componentDidMount(){
+    const { onSetAuthUser } = this.props;
+    firebase.auth.onAuthStateChanged(authUser => {
+       authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
+       });
+  }
 
   // componentWillReceiveProps(newProps){
   // }

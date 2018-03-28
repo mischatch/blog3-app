@@ -18,15 +18,13 @@ export const receiveErrors = error => ({
 });
 
 export const login = ({ email, password }) => dispatch => {
+  debugger
   return (
     auth.doSignInWithEmailAndPassword(email, password)
     .then(
       user => dispatch(receiveCurrentUser(user))
     )
   );
-    // .catch (
-    //   err => dispatch(receiveErrors(err))
-    // );
 };
 
 export const logout = () => dispatch => {
@@ -48,10 +46,8 @@ export const signup = ({ email, password, username }) => dispatch => {
 };
 
 export const changePass = (newPass) => dispatch => {
+  debugger
   return (
     auth.doPasswordUpdate(newPass)
-      .then(
-        user => dispatch(receiveCurrentUser(user))
-      )
   );
 };

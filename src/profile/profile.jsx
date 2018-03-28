@@ -13,23 +13,18 @@ class Profile extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount(){
-    debugger
-    if(!this.props.loggedIn){
-      this.props.history.push('/');
-    }
-  }
+  // componentDidMount(){
+  //   if(!this.props.loggedIn){
+  //     this.props.history.push('/');
+  //   }
+  // }
 
   onSubmit(e){
     const { passwordOne } = this.state;
-
     const user = { email: this.props.currentUser.email, password: passwordOne};
-    debugger
 
     this.props.changePass(passwordOne)
       .then(() => {
-        debugger
-        this.props.login(user);
         this.setState(() => ({
           passwordOne: '',
           passwordTwo: '',
@@ -37,11 +32,12 @@ class Profile extends React.Component {
         }));
       })
       .catch(error => this.setState(error));
+      e.preventDefault();
   }
 
   render(){
+    debugger
     const { passwordOne, passwordTwo, error } = this.state;
-
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
 
     return(

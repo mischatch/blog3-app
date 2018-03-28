@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
 import LoginFormContainer from './loginForm/loginFormContainer';
 import SignUpContainer from './signUp/signUpContainer';
 import HomeContainer from './home/homeContainer';
@@ -15,7 +15,9 @@ const App = () =>
       <Router>
         <div>
           <NavigationContainer test={test}/>
-          <h1>Blog</h1>
+          <Link to='/'>
+            <h1>Blog</h1>
+          </Link>
           <Switch>
             <Route exact path='/' component={HomeContainer} />
             <Route exact path='/login' component={LoginFormContainer} />

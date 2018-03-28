@@ -15,7 +15,7 @@ const mapStateToProps = ({ session }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     changePass: newPass => dispatch(changePass(newPass)),
-    login: (authUser) => dispatch(login(authUser)),
+    login: authUser => dispatch(login(authUser)),
   };
 };
 

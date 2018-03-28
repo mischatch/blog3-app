@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Home from './home';
 import { receiveCurrentUser } from '../actions/session_actions';
+import { withRouter } from 'react-router-dom';
+
 
 
 
@@ -16,4 +18,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
