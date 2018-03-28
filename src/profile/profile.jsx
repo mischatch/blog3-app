@@ -39,6 +39,7 @@ class Profile extends React.Component {
 
     return(
       <div>
+        <h1>Profile Page</h1>
         <ul>
           <li><button value='passChange' onClick={this.componentPick}>Change Password</button></li>
           <li><button value='passReset' onClick={this.componentPick}>Reset Password</button></li>

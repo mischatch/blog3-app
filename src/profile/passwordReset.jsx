@@ -25,11 +25,14 @@ class PasswordReset extends React.Component {
 
     this.props.resetPass(email)
       .then(() => {
-        this.setState({ email: ''})
+        this.setState({ email: ''});
       });
   }
 
   render(){
+
+    const { email, error } = this.state;
+    const isInvalid = email === '';
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -39,6 +42,7 @@ class PasswordReset extends React.Component {
             type="email"
             placeholder="Email"
             />
+          <button disabled={isInvalid} type="submit">Reset My Password</button>
         </form>
       </div>
 

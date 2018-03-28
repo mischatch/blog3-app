@@ -15,7 +15,6 @@ const App = () =>
       <Router>
         <div>
           <NavigationContainer test={test}/>
-            <h1>Blog</h1>
           <Switch>
             <Route exact path='/' component={HomeContainer} />
             <Route exact path='/login' component={LoginFormContainer} />

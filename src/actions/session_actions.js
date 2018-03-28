@@ -52,6 +52,7 @@ export const changePass = (newPass) => dispatch => {
 };
 
 export const resetPass = (email) => dispatch => {
+  debugger
   return (
     auth.doPasswordReset(email)
   );

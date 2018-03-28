@@ -18,7 +18,7 @@ class Home extends Component {
     // const { users } = this.props;
     return(
       <div>
-        Home
+        <h1>Home Page</h1>
       </div>
     )
   }
