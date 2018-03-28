@@ -39,7 +39,7 @@ class Navigation extends React.Component{
     } else {
       return (
       <div>
-        {this.props.session.currentUser.email}
+        {this.props.currentUser.email}
       <br/>
       <button type="submit" onClick={this.logout}>Logout</button>
       </div>)

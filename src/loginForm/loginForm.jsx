@@ -40,7 +40,6 @@ class LoginForm extends React.Component {
 
 
   render(){
-    debugger
     const { email, password, error } = this.state;
     const isInvalid = password === '' || email === '';
 

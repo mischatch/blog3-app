@@ -13,11 +13,8 @@ class Profile extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  handleChange(){
-
-  }
-
-  componentWillMount(){
+  componentDidMount(){
+    debugger
     if(!this.props.loggedIn){
       this.props.history.push('/');
     }
@@ -26,15 +23,20 @@ class Profile extends React.Component {
   onSubmit(e){
     const { passwordOne } = this.state;
 
+    const user = { email: this.props.currentUser.email, password: passwordOne};
+    debugger
+
     this.props.changePass(passwordOne)
       .then(() => {
+        debugger
+        this.props.login(user);
         this.setState(() => ({
           passwordOne: '',
           passwordTwo: '',
           error: null,
         }));
       })
-      .catch((error) => {this.setState(error: error)});
+      .catch(error => this.setState(error));
   }
 
   render(){
