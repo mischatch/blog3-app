@@ -6,7 +6,7 @@ const nullPosts = Object.freeze({
 
 const postReducer = (state = nullPosts, action) => {
   Object.freeze(state);
-
+  debugger
   switch(action.type) {
     case RECEIVE_POST : {
       return Object.assign({}, state, {

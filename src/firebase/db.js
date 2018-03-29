@@ -25,7 +25,11 @@ export const doCreatePost = ({ title, body }) => {
 };
 
 export const getAllPosts = () => {
-  db.ref('posts').once('value')
-    .then((res) => console.log(res))
+  db.ref('posts').on('value', snap => {
+    console.log(snap.val());
+    debugger
+    return snap.val();
+  })
+    // .then((res) => console.log(res))
   ;
 };

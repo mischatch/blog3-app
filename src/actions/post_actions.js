@@ -32,6 +32,9 @@ export const getAllPosts = () => dispatch => {
   debugger
   return (
     db.getAllPosts()
-      .then(posts => dispatch(receiveAllPosts(posts)))
+      .then((posts) => {
+        debugger
+        dispatch(receiveAllPosts(posts));
+      })
   );
 };
