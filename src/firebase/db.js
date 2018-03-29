@@ -1,4 +1,4 @@
-import { db } from './firebase';
+import { db, posts } from './firebase';
 
 export const doCreateUser = (id, username, email) => {
   return (
@@ -7,9 +7,21 @@ export const doCreateUser = (id, username, email) => {
       email,
     })
 
-  )
-}
+  );
+};
 
 
 export const onceGetUsers = () =>
   db.ref('users').once('value');
+
+
+export const doCreatePost = ({ title, body }) => {
+  debugger
+  return (
+    posts.push().set({
+      title,
+      body
+    })
+
+  );
+};

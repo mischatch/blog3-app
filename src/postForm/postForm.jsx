@@ -24,7 +24,16 @@ class PostForm extends React.Component {
   submitForm(e){
     e.preventDefault();
     debugger
-    const { title, body } = this.state;
+    const post = this.state;
+
+    this.props.createPost(post)
+      .then(() => {
+        this.setState({
+          title: '',
+          body: '',
+        });
+      });
+
   }
 
   render(){
@@ -40,7 +49,7 @@ class PostForm extends React.Component {
             placeholder="Enter Title"
             onChange={this.handleChange}
             />
-          <textArea
+          <textarea
             type="text"
             name="body"
             value={this.state.body}
