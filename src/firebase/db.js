@@ -16,12 +16,16 @@ export const onceGetUsers = () =>
 
 
 export const doCreatePost = ({ title, body }) => {
-  debugger
   return (
     posts.push().set({
       title,
       body
     })
-
   );
+};
+
+export const getAllPosts = () => {
+  db.ref('posts').once('value')
+    .then((res) => console.log(res))
+  ;
 };

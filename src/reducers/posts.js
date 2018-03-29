@@ -1,4 +1,4 @@
-import { RECEIVE_POST } from '../actions/post_actions';
+import { RECEIVE_POST, RECEIVE_ALL_POSTS } from '../actions/post_actions';
 
 const nullPosts = Object.freeze({
   posts: [],
@@ -11,6 +11,11 @@ const postReducer = (state = nullPosts, action) => {
     case RECEIVE_POST : {
       return Object.assign({}, state, {
         posts: [action.post]
+      });
+    }
+    case RECEIVE_ALL_POSTS : {
+      Object.assign({}, state, {
+        posts: [action.posts]
       });
     }
     default:

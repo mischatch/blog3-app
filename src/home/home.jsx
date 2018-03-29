@@ -4,6 +4,10 @@ import { firebase } from '../firebase';
 class Home extends Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      posts: [],
+    };
   }
 
   componentDidMount() {
@@ -12,10 +16,16 @@ class Home extends Component {
     firebase.auth.onAuthStateChanged(authUser => {
        authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
        });
+
+    this.setState({
+      posts: this.props.getAllPosts()
+    });
   }
 
   render(){
     // const { users } = this.props;
+    const { posts } = this.state;
+    debugger
     return(
       <div>
         <h1>Home Page</h1>
