@@ -4,7 +4,6 @@ import Profile from './profile';
 import { changePass, resetPass, login } from '../actions/session_actions';
 
 const mapStateToProps = ({ session }) => {
-  debugger
   return {
     currentUser: session.currentUser,
     loggedIn: Boolean(session.currentUser),

@@ -1,6 +1,7 @@
 import React from 'react';
 import PasswordChange from './passwordChange';
 import PasswordReset from './passwordReset';
+import PostForm from '../postForm/postForm';
 
 class Profile extends React.Component {
   constructor(props){
@@ -21,7 +22,6 @@ class Profile extends React.Component {
   // }
 
   componentPick(e){
-    debugger
     this.setState({ comp: e.target.value });
   }
 
@@ -31,6 +31,8 @@ class Profile extends React.Component {
         return <PasswordChange changePass={this.props.changePass} /> ;
       case 'passReset':
         return <PasswordReset resetPass={this.props.resetPass} /> ;
+      case 'postCreate':
+        return <PostForm  /> ;
     }
   }
 
@@ -40,11 +42,12 @@ class Profile extends React.Component {
     return(
       <div>
         <h1>Profile Page</h1>
-        <ul>
-          <li><button value='passChange' onClick={this.componentPick}>Change Password</button></li>
-          <li><button value='passReset' onClick={this.componentPick}>Reset Password</button></li>
-          <li></li>
-        </ul>
+          <br/>
+          <button value='passChange' onClick={this.componentPick}>Change Password</button>
+          <br/>
+          <button value='passReset' onClick={this.componentPick}>Reset Password</button>
+          <br/>
+          <button value='postCreate' onClick={this.componentPick}>Create new post</button>
         <div>
           {this.renderComponent()}
         </div>
