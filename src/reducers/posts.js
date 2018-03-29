@@ -1,4 +1,5 @@
 import { RECEIVE_POST, RECEIVE_ALL_POSTS } from '../actions/post_actions';
+import { postsShaper } from './selectors';
 
 const nullPosts = Object.freeze({
   posts: [],
@@ -6,7 +7,6 @@ const nullPosts = Object.freeze({
 
 const postReducer = (state = nullPosts, action) => {
   Object.freeze(state);
-  debugger
   switch(action.type) {
     case RECEIVE_POST : {
       return Object.assign({}, state, {
@@ -14,8 +14,10 @@ const postReducer = (state = nullPosts, action) => {
       });
     }
     case RECEIVE_ALL_POSTS : {
+      debugger
+      let all = postsShaper(action.posts)
       Object.assign({}, state, {
-        posts: [action.posts]
+        posts: all
       });
     }
     default:

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase';
+import Post from '../post/post';
 
 class Home extends Component {
   constructor(props){
@@ -17,6 +18,12 @@ class Home extends Component {
        authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
        });
 
+       this.setState({
+         posts: this.props.getAllPosts()
+       });
+  }
+
+  componentWillMount(){
     this.setState({
       posts: this.props.getAllPosts()
     });
@@ -24,11 +31,14 @@ class Home extends Component {
 
   render(){
     // const { users } = this.props;
-    const { posts } = this.state;
+    const { posts } = this.props;
     debugger
     return(
       <div>
         <h1>Home Page</h1>
+        <ul>
+          { [1, 2, 3].map((post, i) => <Post key={i} />) }
+        </ul>
       </div>
     )
   }

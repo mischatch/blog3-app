@@ -29,12 +29,8 @@ export const createPost = post => dispatch => {
 };
 
 export const getAllPosts = () => dispatch => {
-  debugger
   return (
     db.getAllPosts()
-      .then((posts) => {
-        debugger
-        dispatch(receiveAllPosts(posts));
-      })
+      .then((posts) => dispatch(receiveAllPosts(posts)))
   );
 };
