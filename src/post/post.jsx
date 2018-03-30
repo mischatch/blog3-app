@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Post = (props) => {
+const Post = ({ post }) => {
   debugger
+  const { body, title } = post[(Object.keys(post))];
   return (
     <div>
-      This is post
+      <h5>{title}</h5>
+      <p>{body}</p>
     </div>
   );
 };

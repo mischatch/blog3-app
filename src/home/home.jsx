@@ -18,26 +18,29 @@ class Home extends Component {
        authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
        });
 
-       this.setState({
-         posts: this.props.getAllPosts()
-       });
+       this.props.getAllPosts();
+
+       // this.setState({
+       //   posts: posts,
+       // });
   }
 
   componentWillMount(){
-    this.setState({
-      posts: this.props.getAllPosts()
-    });
+    debugger
+    this.props.getAllPosts();
+
   }
 
   render(){
     // const { users } = this.props;
     const { posts } = this.props;
+    if(!posts) return null;
     debugger
     return(
       <div>
         <h1>Home Page</h1>
+        { posts.map((post, i) => <Post key={i} post={post} />) }
         <ul>
-          { [1, 2, 3].map((post, i) => <Post key={i} />) }
         </ul>
       </div>
     )

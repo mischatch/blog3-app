@@ -22,10 +22,11 @@ export const receiveAllPosts = posts => {
 
 
 export const createPost = post => dispatch => {
-  return (
     db.doCreatePost(post)
-      .then(post => dispatch(receivePost(post)))
-  );
+      .then(post => {
+        debugger
+        dispatch(receivePost(post));
+      });
 };
 
 export const getAllPosts = () => dispatch => {

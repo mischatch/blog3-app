@@ -9,8 +9,8 @@ import { getAllPosts } from '../actions/post_actions';
 const mapStateToProps = state => {
     debugger
     return {
-      users: state.users,
-      posts: state.posts,
+      // users: state.users,
+      posts: state.posts.posts,
     };
 };
 
