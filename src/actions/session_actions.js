@@ -18,7 +18,6 @@ export const receiveErrors = error => ({
 });
 
 export const login = ({ email, password }) => dispatch => {
-  debugger
   return (
     auth.doSignInWithEmailAndPassword(email, password)
     .then(
@@ -52,7 +51,6 @@ export const changePass = (newPass) => dispatch => {
 };
 
 export const resetPass = (email) => dispatch => {
-  debugger
   return (
     auth.doPasswordReset(email)
   );

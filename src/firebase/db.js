@@ -16,17 +16,14 @@ export const onceGetUsers = () =>
 
 
 export const doCreatePost = ({ title, body }) => {
-    return posts.push().set({ title, body })
-      .then(() => {
-        return getLastPost();
-      });
+  return posts.push().set({ title, body })
+    .then(() => {
+      return getLastPost();
+    });
 };
 
 export const getLastPost = () => {
-    debugger
     return posts.limitToLast(2).on('child_added', (snap) => {
-      debugger
-      console.log(snap);
       return snap.val();
     });
 };
@@ -37,4 +34,7 @@ export const getAllPosts = () => {
       return res.val();
     });
   };
-    // .then((res) => console.log(res))
+
+  export const removePost = (id) => {
+    return posts.child(id).remove();
+  };

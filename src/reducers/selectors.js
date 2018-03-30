@@ -1,7 +1,6 @@
 
 
 export const postsShaper = posts => {
-  debugger
   let arr = [];
   (Object.keys(posts)).forEach((i) => {
     let obj = {};

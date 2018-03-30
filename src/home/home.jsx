@@ -9,6 +9,8 @@ class Home extends Component {
     this.state = {
       posts: [],
     };
+
+    this.removePost = this.removePost.bind(this);
   }
 
   componentDidMount() {
@@ -26,9 +28,13 @@ class Home extends Component {
   }
 
   componentWillMount(){
-    debugger
     this.props.getAllPosts();
 
+  }
+
+  removePost(id){
+
+    this.props.deletePost(id);
   }
 
   render(){
@@ -39,7 +45,12 @@ class Home extends Component {
     return(
       <div>
         <h1>Home Page</h1>
-        { posts.map((post, i) => <Post key={i} post={post} />) }
+        { Object.keys(posts).map((key) => <Post
+          key={key}
+          post={posts[key]}
+          id={key}
+          removePost={this.removePost}
+          />) }
         <ul>
         </ul>
       </div>

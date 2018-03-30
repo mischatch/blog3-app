@@ -1,10 +1,10 @@
-import { RECEIVE_POST, RECEIVE_ALL_POSTS } from '../actions/post_actions';
+import { RECEIVE_POST, RECEIVE_ALL_POSTS, REMOVE_POST } from '../actions/post_actions';
 import { postsShaper } from './selectors';
 
 import merge from 'lodash/merge';
 
 const nullPosts = Object.freeze({
-  posts: [],
+  posts: {},
 });
 
 const postReducer = (state = nullPosts, action) => {
@@ -12,16 +12,20 @@ const postReducer = (state = nullPosts, action) => {
   let nextState;
   switch(action.type) {
     case RECEIVE_POST : {
-      debugger
-      let newPost = {[Object.keys(action.post)]: action.post};
+      let newPost = action.post;
       nextState = merge({}, state, newPost);
       return nextState;
     }
     case RECEIVE_ALL_POSTS : {
-      let all = postsShaper(action.posts);
-      return Object.assign({}, state, {
-        posts: all
-      });
+      debugger
+      let all = action.posts;
+      nextState = merge({}, state, all);
+      return nextState;
+    }
+    case REMOVE_POST : {
+      nextState = merge({}, state);
+      delete nextState[action.post.id];
+      return nextState;
     }
     default:
       return state;

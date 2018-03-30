@@ -18,12 +18,10 @@ class PostForm extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    debugger
   }
 
   submitForm(e){
     e.preventDefault();
-    debugger
     const post = this.state;
 
     this.props.createPost(post)
