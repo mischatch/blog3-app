@@ -5,6 +5,7 @@ export const RECEIVE_ALL_POSTS = "RECEIVE_ALL_POSTS";
 export const REMOVE_POST = "REMOVE_POST";
 
 export const receivePost = post => {
+  debugger
   return {
     type: RECEIVE_POST,
     post
@@ -26,13 +27,8 @@ export const removePost = id => {
 };
 
 export const createPost = post => dispatch => {
-    return (
-      db.doCreatePost(post)
-        .then(() =>  {
-          debugger
-          dispatch(receivePost(post));
-        })
-    );
+  return db.doCreatePost(post)
+    .then((postNew) => dispatch(receivePost(postNew)));
 };
 
 export const getAllPosts = () => dispatch => {

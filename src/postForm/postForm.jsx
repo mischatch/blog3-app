@@ -31,7 +31,6 @@ class PostForm extends React.Component {
           body: '',
         });
       });
-
   }
 
   render(){

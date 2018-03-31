@@ -12,8 +12,11 @@ const postReducer = (state = nullPosts, action) => {
   let nextState;
   switch(action.type) {
     case RECEIVE_POST : {
-      let newPost = { posts: { [action.post.key]: action.post.post}}
+      debugger
+      let newPost = {posts: {}};
+      newPost.posts[action.post.key] = action.post.post;
       nextState = merge({}, state, newPost);
+      debugger
       return nextState;
     }
     case RECEIVE_ALL_POSTS : {
