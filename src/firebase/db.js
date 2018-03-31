@@ -18,13 +18,15 @@ export const onceGetUsers = () =>
 export const doCreatePost = ({ title, body }) => {
   return posts.push().set({ title, body })
     .then(() => {
+      debugger
       return getLastPost();
     });
 };
 
 export const getLastPost = () => {
     return posts.limitToLast(2).on('child_added', (snap) => {
-      return snap.val();
+      debugger
+      return { post: snap.val(), key: snap.key };
     });
 };
 

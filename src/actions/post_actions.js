@@ -28,8 +28,10 @@ export const removePost = id => {
 export const createPost = post => dispatch => {
     return (
       db.doCreatePost(post)
-        .then(() => dispatch(receivePost(post))
-        )
+        .then(() =>  {
+          debugger
+          dispatch(receivePost(post));
+        })
     );
 };
 
