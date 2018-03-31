@@ -33,7 +33,7 @@ class Home extends Component {
   }
 
   removePost(id){
-
+    debugger
     this.props.deletePost(id);
   }
 

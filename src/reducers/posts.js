@@ -17,14 +17,14 @@ const postReducer = (state = nullPosts, action) => {
       return nextState;
     }
     case RECEIVE_ALL_POSTS : {
-      debugger
-      let all = action.posts;
+      let all = { posts: action.posts };
       nextState = merge({}, state, all);
       return nextState;
     }
     case REMOVE_POST : {
+      debugger
       nextState = merge({}, state);
-      delete nextState[action.post.id];
+      delete nextState.posts[action.id];
       return nextState;
     }
     default:

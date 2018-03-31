@@ -36,5 +36,7 @@ export const getAllPosts = () => {
   };
 
   export const removePost = (id) => {
-    return posts.child(id).remove();
+    debugger
+    return posts.child(id).remove()
+      .then(id => id);
   };

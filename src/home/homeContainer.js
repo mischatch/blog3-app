@@ -7,7 +7,6 @@ import { getAllPosts, deletePost } from '../actions/post_actions';
 
 
 const mapStateToProps = state => {
-    debugger
     return {
       // users: state.users,
       posts: state.posts.posts,
@@ -18,7 +17,7 @@ const mapDispatchToProps = dispatch => {
   return{
     onSetAuthUser: (authUser) => dispatch(receiveCurrentUser(authUser)),
     getAllPosts: () => dispatch(getAllPosts()),
-    deletePost: (id) => dispatch(deletePost()),
+    deletePost: (id) => dispatch(deletePost(id)),
   };
 };
 

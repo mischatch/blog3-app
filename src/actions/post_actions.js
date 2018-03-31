@@ -18,10 +18,10 @@ export const receiveAllPosts = posts => {
   };
 };
 
-export const removePost = post => {
+export const removePost = id => {
   return {
     type: REMOVE_POST,
-    post
+    id
   };
 };
 
@@ -43,6 +43,9 @@ export const getAllPosts = () => dispatch => {
 export const deletePost = id => dispatch => {
   return (
     db.removePost(id)
-      .then(() => dispatch(removePost(id)))
+      .then(() => {
+        debugger;
+        dispatch(removePost(id));
+      })
   );
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Post = ({ key, post, removePost }) => {
+const Post = ({ id, post, removePost }) => {
   debugger
-  const { body, title, id } = post;
+  const { body, title } = post;
   return (
     <div>
       <h5>{title}</h5>
