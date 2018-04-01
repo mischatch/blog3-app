@@ -5,8 +5,8 @@ class PostView extends React.Component {
     super(props);
 
     this.state = {
-      title: '',
-      body: '',
+      title: this.props.post.title,
+      body: this.props.post.body,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -15,18 +15,17 @@ class PostView extends React.Component {
 
   componentWillMount(){
     const id = this.props.history.location.pathname.slice(7);
+    const props = this.props;
     this.props.getOnePost(id);
-    const post = this.props.post.id;
-    console.log(post);
-    // this.setState({
-    //   title: post.title,
-    //   body: post.body,
-    // });
   }
 
-  componentDidMount(){
+  componentWillReceiveProps(nextProps){
     const id = this.props.history.location.pathname.slice(7);
-    this.props.getOnePost(id);
+    const { title, body } = nextProps.post[id];
+    this.setState({
+      title,
+      body,
+    });
   }
 
   handleChange(e){
@@ -38,18 +37,17 @@ class PostView extends React.Component {
 
   submitForm(e){
     e.preventDefault();
+    const id = this.props.history.location.pathname.slice(7);
     const post = this.state;
-    this.props.editPost(post);
+    debugger
+    this.props.editPost(post, id);
   }
 
 
   render(){
-    debugger
     const id = this.props.history.location.pathname.slice(7);
-    const { post } = this.props.post.id;
-    if(this.props.post){
-      console.log(post);
-      // this.setState({post})
+    if(!this.state.title || !this.state.body){
+      return null;
     }
     return (
       <div>

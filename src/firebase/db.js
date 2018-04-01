@@ -26,7 +26,6 @@ export const doCreatePost = ({ title, body }) => {
 export const getPostById = (id) => {
     return posts.child(`${id}`).once('value')
       .then(snap => {
-        debugger
         const post = snap.val();
         return { post, key: id};
       });
@@ -46,7 +45,7 @@ export const removePost = (id) => {
 
 export const postEdit = (post, id) => {
   return posts.child(id).update(post)
-    .then(res => {
-      debugger
+    .then(() => {
+      return getPostById(id);
     });
 };

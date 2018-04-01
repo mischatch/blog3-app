@@ -38,11 +38,9 @@ export const getAllPosts = () => dispatch => {
 };
 
 export const getOnePost = id => dispatch => {
-  debugger
   return (
     db.getPostById(id)
       .then((post) => {
-        debugger
         dispatch(receivePost(post));
       })
   );
@@ -60,6 +58,8 @@ export const deletePost = id => dispatch => {
 export const editPost = (post, id) => dispatch => {
   return (
     db.postEdit(post, id)
-      .then((post) => dispatch(receivePost(post)))
+      .then((post) => {
+        dispatch(receivePost(post));
+      })
   );
 };

@@ -4,7 +4,6 @@ import PostView from './postView';
 import { editPost, getOnePost } from '../actions/post_actions';
 
 const mapStateToProps = ({ posts }, ownProps) => {
-  debugger
   return {
     post: posts.posts,
   };
@@ -13,7 +12,7 @@ const mapStateToProps = ({ posts }, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    editPost: post => dispatch(editPost(post)),
+    editPost: (post, id) => dispatch(editPost(post, id)),
     getOnePost: id => dispatch(getOnePost(id)),
   };
 };
