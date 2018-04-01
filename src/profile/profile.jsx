@@ -32,7 +32,10 @@ class Profile extends React.Component {
       case 'passReset':
         return <PasswordReset resetPass={this.props.resetPass} /> ;
       case 'postCreate':
-        return <PostForm createPost={this.props.createPost} /> ;
+        return <PostForm
+          createPost={this.props.createPost}
+          history={this.props.history}
+          /> ;
     }
   }
 

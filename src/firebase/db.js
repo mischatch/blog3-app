@@ -23,12 +23,13 @@ export const doCreatePost = ({ title, body }) => {
   // return getLastPost();
 };
 
-export const getLastPost = () => {
-    // let postNew = {};
-    return posts.limitToLast(1).on('child_added', (snap) => {
-       return { post: snap.val(), key: snap.key };
-    });
-    // return postNew;
+export const getPostById = (id) => {
+    return posts.child(`${id}`).once('value')
+      .then(snap => {
+        debugger
+        const post = snap.val();
+        return { post, key: id};
+      });
 };
 
 export const getAllPosts = () => {
@@ -38,8 +39,14 @@ export const getAllPosts = () => {
     });
   };
 
-  export const removePost = (id) => {
-    debugger
-    return posts.child(id).remove()
-      .then(id => id);
-  };
+export const removePost = (id) => {
+  return posts.child(id).remove()
+    .then(id => id);
+};
+
+export const postEdit = (post, id) => {
+  return posts.child(id).update(post)
+    .then(res => {
+      debugger
+    });
+};

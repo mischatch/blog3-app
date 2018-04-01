@@ -1,6 +1,6 @@
 import React from 'react';
 
-class PostForm extends React.Component {
+class PostView extends React.Component {
   constructor(props){
     super(props);
 
@@ -11,7 +11,22 @@ class PostForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.setState = this.setState.bind(this);
+  }
+
+  componentWillMount(){
+    const id = this.props.history.location.pathname.slice(7);
+    this.props.getOnePost(id);
+    const post = this.props.post.id;
+    console.log(post);
+    // this.setState({
+    //   title: post.title,
+    //   body: post.body,
+    // });
+  }
+
+  componentDidMount(){
+    const id = this.props.history.location.pathname.slice(7);
+    this.props.getOnePost(id);
   }
 
   handleChange(e){
@@ -24,24 +39,21 @@ class PostForm extends React.Component {
   submitForm(e){
     e.preventDefault();
     const post = this.state;
-    const history = this.props.history;
-    debugger
-    this.props.createPost(post)
-      .then((res) => {
-        debugger
-        this.setState({
-          title: '',
-          body: '',
-        });
-      history.push(`/posts/${res.post.key}`);
-    });
+    this.props.editPost(post);
   }
 
-  render(){
 
-    return(
+  render(){
+    debugger
+    const id = this.props.history.location.pathname.slice(7);
+    const { post } = this.props.post.id;
+    if(this.props.post){
+      console.log(post);
+      // this.setState({post})
+    }
+    return (
       <div>
-        <h3>Create new post</h3>
+        <h3>Edit Post</h3>
         <form>
           <input
             type="text"
@@ -57,11 +69,11 @@ class PostForm extends React.Component {
             placeholder="Enter Title"
             onChange={this.handleChange}
             />
-          <button type="submit" onClick={this.submitForm}>Post it</button>
+          <button type="submit" onClick={this.submitForm}>Edit</button>
         </form>
       </div>
     )
   }
 }
 
-export default PostForm;
+export default PostView;

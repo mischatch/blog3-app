@@ -1,13 +1,12 @@
 import React from 'react';
 
 const Post = ({ id, post, removePost }) => {
-  debugger
   const { body, title } = post;
   return (
     <div>
       <h5>{title}</h5>
       <p>{body}</p>
-      <button onClick={() => removePost(id)}>DELETE</button>
+      <button onClick={() => removePost(id)}>✕</button>
     </div>
   );
 };

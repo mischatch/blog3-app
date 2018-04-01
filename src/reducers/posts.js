@@ -16,7 +16,6 @@ const postReducer = (state = nullPosts, action) => {
       let newPost = {posts: {}};
       newPost.posts[action.post.key] = action.post.post;
       nextState = merge({}, state, newPost);
-      debugger
       return nextState;
     }
     case RECEIVE_ALL_POSTS : {
@@ -25,7 +24,6 @@ const postReducer = (state = nullPosts, action) => {
       return nextState;
     }
     case REMOVE_POST : {
-      debugger
       nextState = merge({}, state);
       delete nextState.posts[action.id];
       return nextState;
