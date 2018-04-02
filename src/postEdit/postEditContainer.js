@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import PostView from './postView';
+import PostEdit from './postEdit';
 import { editPost, getOnePost } from '../actions/post_actions';
 
 const mapStateToProps = ({ posts }, ownProps) => {
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostView));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostEdit));

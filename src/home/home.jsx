@@ -8,6 +8,7 @@ class Home extends Component {
 
     this.removePost = this.removePost.bind(this);
     this.postsToRender = this.postsToRender.bind(this);
+    this.goToEditPost = this.goToEditPost.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,10 @@ class Home extends Component {
 
   removePost(id){
     this.props.deletePost(id);
+  }
+
+  goToEditPost(id){
+    this.props.history.push(`/posts/${id}`);
   }
 
   postsToRender(){
@@ -47,6 +52,7 @@ class Home extends Component {
               post={posts[key]}
               id={key}
               removePost={this.removePost}
+              goToEditPost={this.goToEditPost}
               />) }
             <ul>
             </ul>

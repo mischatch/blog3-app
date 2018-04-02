@@ -1,4 +1,7 @@
 import { db, posts } from './firebase';
+import * as firebase from 'firebase';
+
+
 
 export const doCreateUser = (id, username, email) => {
   return (
@@ -16,7 +19,11 @@ export const onceGetUsers = () =>
 
 
 export const doCreatePost = ({ title, body }) => {
-  return posts.push({ title, body })
+  return posts.push({
+    createdAt: firebase.database.ServerValue.TIMESTAMP,
+    title,
+    body
+  })
     .then((res) => {
       return  { post: {title, body}, key: res.key };
       });

@@ -33,7 +33,8 @@ class PostForm extends React.Component {
           title: '',
           body: '',
         });
-      history.push(`/posts/${res.post.key}`);
+      // history.push(`/posts/${res.post.key}`);
+      history.push('/');
     });
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class PostView extends React.Component {
+class PostEdit extends React.Component {
   constructor(props){
     super(props);
 
@@ -40,7 +40,10 @@ class PostView extends React.Component {
     const id = this.props.history.location.pathname.slice(7);
     const post = this.state;
     debugger
-    this.props.editPost(post, id);
+    this.props.editPost(post, id)
+      .then(() => {
+        this.props.history.push('/');
+      });
   }
 
 
@@ -49,6 +52,7 @@ class PostView extends React.Component {
     if(!this.state.title || !this.state.body){
       return null;
     }
+
     return (
       <div>
         <h3>Edit Post</h3>
@@ -74,4 +78,4 @@ class PostView extends React.Component {
   }
 }
 
-export default PostView;
+export default PostEdit;
