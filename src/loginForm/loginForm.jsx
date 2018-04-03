@@ -65,7 +65,8 @@ class LoginForm extends React.Component {
           {this.showErrors()}
         </div>
 
-        <Link to='/signup'>SignUp</Link>
+
+        { /* <Link to='/signup'>SignUp</Link> */}
 
       </div>
     )

@@ -39,7 +39,8 @@ class PostForm extends React.Component {
   }
 
   render(){
-
+    const { title, body } = this.state;
+    let isInvalid = title === '' || body === '';
     return(
       <div>
         <h3>Create new post</h3>
@@ -58,7 +59,10 @@ class PostForm extends React.Component {
             placeholder="Enter Title"
             onChange={this.handleChange}
             />
-          <button type="submit" onClick={this.submitForm}>Post it</button>
+          <button
+            type="submit"
+            disabled={isInvalid}
+            onClick={this.submitForm}>Post it</button>
         </form>
       </div>
     )
