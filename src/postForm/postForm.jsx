@@ -5,11 +5,18 @@ class PostForm extends React.Component {
     super(props);
 
     this.state = {
-      title: '',
-      body: '',
+      post: {
+        title: '',
+        body: '',
+      },
+      preview: {
+        file: [],
+        imagePreviewUrl: [],
+      },
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleFile = this.handleFile.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.setState = this.setState.bind(this);
   }
@@ -21,14 +28,29 @@ class PostForm extends React.Component {
     });
   }
 
+  handleFile(e){
+    debugger
+    e.preventDefault();
+    let files = Array.from(e.target.files);
+    files.forEach(file => {
+      let reader = new FileReader();
+      reader.onloadend = () => {
+        this.setState({ preview: {
+          file: this.state.preview.file.concat(file),
+          imagePreviewUrl: this.state.preview.imagePreviewUrl.concat(reader.result)
+          }
+        });
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
   submitForm(e){
     e.preventDefault();
-    const post = this.state;
+    const { post } = this.state;
     const history = this.props.history;
-    debugger
     this.props.createPost(post)
       .then((res) => {
-        debugger
         this.setState({
           title: '',
           body: '',
@@ -39,6 +61,7 @@ class PostForm extends React.Component {
   }
 
   render(){
+    const preview = this.state.preview.imagePreviewUrl;
     const { title, body } = this.state;
     let isInvalid = title === '' || body === '';
     return(
@@ -59,11 +82,21 @@ class PostForm extends React.Component {
             placeholder="Enter Title"
             onChange={this.handleChange}
             />
+          <input
+            type='file'
+            name='image'
+            onChange={this.handleFile}
+            multiple
+            />
           <button
             type="submit"
             disabled={isInvalid}
             onClick={this.submitForm}>Post it</button>
         </form>
+        { preview.map((url, i) => <img
+                                      key={i}
+                                      width='150px'
+                                      src={url} />)}
       </div>
     )
   }

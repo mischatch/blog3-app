@@ -20,6 +20,7 @@ const config = {
 const db = firebase.database();
 const auth = firebase.auth();
 const posts = db.ref().child('posts');
+const storage = firebase.storage();
 
 // console.log(auth.currentUser);
 
@@ -27,4 +28,5 @@ export {
  db,
  auth,
  posts,
+ storage,
 };
