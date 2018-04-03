@@ -43,13 +43,10 @@ class Navigation extends React.Component{
       }
     } else {
       return (
-      <div>
+      <div className='nav-container'>
         <button className="button button-outline" type="submit" onClick={this.logout}>Logout</button>
-        <span>   </span>
         <span>{this.props.currentUser.email}</span>
-        <br/>
         <Link to='/profile'>Profile</Link>
-        <br/>
         <Link to='/'>Home</Link>
       </div>)
     }

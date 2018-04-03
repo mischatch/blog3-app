@@ -43,14 +43,16 @@ class Profile extends React.Component {
   render(){
 
     return(
-      <div>
-        <h1>Profile Page</h1>
+      <div className='profile-container'>
+        <div className='profile-links'>
+          <h1>Profile Page</h1>
           <br/>
           <button value='passChange' onClick={this.componentPick}>Change Password</button>
           <br/>
           <button value='passReset' onClick={this.componentPick}>Reset Password</button>
           <br/>
           <button value='postCreate' onClick={this.componentPick}>Create new post</button>
+        </div>
         <div>
           {this.renderComponent()}
         </div>
