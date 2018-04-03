@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import SessionReducer from './session';
 import postsReducer from './posts';
+import imagesReducer from './images';
 // import UsersReducer from './users';
 
 

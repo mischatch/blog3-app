@@ -10,7 +10,7 @@ class PostForm extends React.Component {
         body: '',
       },
       preview: {
-        file: [],
+        files: [],
         imagePreviewUrl: [],
       },
     };
@@ -19,6 +19,7 @@ class PostForm extends React.Component {
     this.handleFile = this.handleFile.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.setState = this.setState.bind(this);
+    this.uploadTest = this.uploadTest.bind(this);
   }
 
   handleChange(e){
@@ -36,7 +37,7 @@ class PostForm extends React.Component {
       let reader = new FileReader();
       reader.onloadend = () => {
         this.setState({ preview: {
-          file: this.state.preview.file.concat(file),
+          files: this.state.preview.files.concat(file),
           imagePreviewUrl: this.state.preview.imagePreviewUrl.concat(reader.result)
           }
         });
@@ -49,8 +50,12 @@ class PostForm extends React.Component {
     e.preventDefault();
     const { post } = this.state;
     const history = this.props.history;
+    let that = this;
     this.props.createPost(post)
       .then((res) => {
+        debugger
+        const { key } = res.post;
+        this.uploadTest(key);
         this.setState({
           title: '',
           body: '',
@@ -60,7 +65,16 @@ class PostForm extends React.Component {
     });
   }
 
+  uploadTest(postID){
+    const { files } = this.state.preview;
+    debugger
+    files.forEach(file => {
+      this.props.upload(file, postID);
+    });
+  }
+
   render(){
+    console.log(this.state);
     const preview = this.state.preview.imagePreviewUrl;
     const { title, body } = this.state;
     let isInvalid = title === '' || body === '';
