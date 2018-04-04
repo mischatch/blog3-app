@@ -1,13 +1,17 @@
 import * as firebase from 'firebase';
-import { storage } from './firebase';
+import { storage, db } from './firebase';
 
 const storageRef = storage.ref();
 const images = storageRef.child('images');
 
 export const updloadFiles = (file, postID) => {
-  return storageRef.child(`${postID}/${file.name}`).put(file)
+  return storageRef.child(`images/${postID}/${file.name}`).put(file)
         .then(snap => {
+          const imageData = {
+            name: snap.metadata.name,
+            url: snap.metadata.downloadURLs[0],
+          };
+
           return snap.metadata.downloadURLs[0];
         });
-      // storageRef.child(`images/${postID}`).pust(file);
 };

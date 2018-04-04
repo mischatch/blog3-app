@@ -35,6 +35,7 @@ class Profile extends React.Component {
         return <PostForm
           createPost={this.props.createPost}
           upload={this.props.upload}
+          addDataToPost={this.props.addDataToPost}
           history={this.props.history}
           /> ;
     }

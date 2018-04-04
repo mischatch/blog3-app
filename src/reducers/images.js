@@ -1,4 +1,4 @@
-import { RECEIVE_IMAGES } from '../actions/images_actions';
+import { RECEIVE_IMAGES, RECEIVE_ALL_IMAGES } from '../actions/images_actions';
 
 
 import merge from 'lodash/merge';
@@ -16,6 +16,11 @@ const imagesReducer = (state = nullImages, action) => {
       // let newPost;
       // nextState = merge({}, state, newPost);
       debugger
+      return nextState;
+    }
+    case RECEIVE_ALL_IMAGES : {
+      debugger
+      nextState = merge({}, state, action.images);
       return nextState;
     }
     default:

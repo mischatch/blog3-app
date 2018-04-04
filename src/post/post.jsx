@@ -4,7 +4,7 @@ const Post = ({ id, post, removePost, goToEditPost }) => {
   const { body, title, createdAt } = post;
   const date = new Date(createdAt).toLocaleDateString();
   const time = new Date(createdAt).toLocaleTimeString();
-  debugger
+  // debugger
   return (
     <div>
       <h5>{title}</h5>

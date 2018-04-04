@@ -19,10 +19,12 @@ class Home extends Component {
        });
 
     this.props.getAllPosts();
+    // this.props.getAllImages();
   }
 
   componentWillMount(){
     this.props.getAllPosts();
+    // this.props.getAllImages();
   }
 
   removePost(id){

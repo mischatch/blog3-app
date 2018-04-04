@@ -63,3 +63,9 @@ export const editPost = (post, id) => dispatch => {
       })
   );
 };
+
+export const addDataToPost = (postUpd, postID) => dispatch => {
+  return (
+    db.postEdit(postUpd, postID)
+  );
+};

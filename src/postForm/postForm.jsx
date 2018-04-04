@@ -13,24 +13,24 @@ class PostForm extends React.Component {
         files: [],
         imagePreviewUrl: [],
       },
+      images: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.setState = this.setState.bind(this);
-    this.uploadTest = this.uploadTest.bind(this);
+    this.uploadImg = this.uploadImg.bind(this);
   }
 
   handleChange(e){
     e.preventDefault();
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    const { post } = this.state;
+    post[e.target.name] = e.target.value;
+    this.setState({ post });
   }
 
   handleFile(e){
-    debugger
     e.preventDefault();
     let files = Array.from(e.target.files);
     files.forEach(file => {
@@ -53,30 +53,30 @@ class PostForm extends React.Component {
     let that = this;
     this.props.createPost(post)
       .then((res) => {
-        debugger
         const { key } = res.post;
-        this.uploadTest(key);
-        this.setState({
-          title: '',
-          body: '',
-        });
-      // history.push(`/posts/${res.post.key}`);
-      history.push('/');
+        this.uploadImg(key);
+        history.push('/');
     });
   }
 
-  uploadTest(postID){
+  uploadImg(postID){
     const { files } = this.state.preview;
-    debugger
     files.forEach(file => {
       this.props.upload(file, postID);
+      this.setState({ images: this.state.images.concat(file.name)});
     });
+    const images = { postID, images: this.state.images };
+    const postUpd = {
+                      title: this.state.post.title,
+                      body: this.state.post.body,
+                      images
+                    };
+    return this.props.addDataToPost(postUpd, postID);
   }
 
   render(){
-    console.log(this.state);
     const preview = this.state.preview.imagePreviewUrl;
-    const { title, body } = this.state;
+    const { title, body } = this.state.post;
     let isInvalid = title === '' || body === '';
     return(
       <div>
@@ -85,14 +85,14 @@ class PostForm extends React.Component {
           <input
             type="text"
             name="title"
-            value={this.state.title}
+            value={this.state.post.title}
             placeholder="Enter Title"
             onChange={this.handleChange}
             />
           <textarea
             type="text"
             name="body"
-            value={this.state.body}
+            value={this.state.post.body}
             placeholder="Enter Title"
             onChange={this.handleChange}
             />

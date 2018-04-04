@@ -8,8 +8,8 @@ export const doCreateUser = (id, username, email) => {
     db.ref(`users/${id}`).set({
       username,
       email,
+      images: {},
     })
-
   );
 };
 
@@ -29,6 +29,10 @@ export const doCreatePost = ({ title, body }) => {
       });
   // return getLastPost();
 };
+
+// export const addImagesToPost = (postID, imageData) => {
+//   return posts.child(`${postID}`).update({images: imageData});
+// };
 
 export const getPostById = (id) => {
     return posts.child(`${id}`).once('value')
