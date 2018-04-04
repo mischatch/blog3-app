@@ -15,3 +15,9 @@ export const updloadFiles = (file, postID) => {
           return snap.metadata.downloadURLs[0];
         });
 };
+
+export const getUrl = (name, id) => {
+  debugger
+  return storageRef.child(`images/${id}/${name}`).getDownloadURL()
+          .then(res => res);
+};

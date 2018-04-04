@@ -46,6 +46,7 @@ class Home extends Component {
         </div>
       );
     } else {
+        debugger
         return(
           <div>
             <h1>Home Page</h1>
