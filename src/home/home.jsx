@@ -29,6 +29,8 @@ class Home extends Component {
 
   removePost(id){
     this.props.deletePost(id);
+    // remove images
+    debugger
   }
 
   goToEditPost(id){

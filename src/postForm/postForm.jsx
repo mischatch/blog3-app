@@ -56,20 +56,8 @@ class PostForm extends React.Component {
     const key = newKey();
 
     this.uploadImg(key);
-    this.props.createPost(post);
-    debugger
-    //   .then((res) => {
-    //     const { key } = res.post;
-    //     // history.push('/');
-    // });
-
+    // this.props.createPost(post);
   }
-
-  // ✅ create new post key
-  // upload photos by key
-  // get photos url
-  // add urls to state
-  // create new post by key
 
   uploadImg(postID){
     const { files } = this.state.preview;
@@ -91,7 +79,7 @@ class PostForm extends React.Component {
     return this.props.addDataToPost(post, postID)
       .then(() => {
         this.props.history.push('/');
-      })
+      });
   }
 
   render(){
