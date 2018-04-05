@@ -17,6 +17,10 @@ export const doCreateUser = (id, username, email) => {
 // export const onceGetUsers = () =>
 //   db.ref('users').once('value');
 
+export const newKey = () => {
+  return posts.push().key;
+};
+
 
 export const doCreatePost = ({ title, body }) => {
   return posts.push({
@@ -27,12 +31,8 @@ export const doCreatePost = ({ title, body }) => {
     .then((res) => {
       return  { post: {title, body}, key: res.key };
       });
-  // return getLastPost();
 };
 
-// export const addImagesToPost = (postID, imageData) => {
-//   return posts.child(`${postID}`).update({images: imageData});
-// };
 
 export const getPostById = (id) => {
     return posts.child(`${id}`).once('value')

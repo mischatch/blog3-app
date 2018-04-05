@@ -1,4 +1,6 @@
 import React from 'react';
+import { getUrl } from '../firebase/storage';
+import { newKey } from '../firebase/db';
 
 class PostForm extends React.Component {
   constructor(props){
@@ -21,6 +23,7 @@ class PostForm extends React.Component {
     this.submitForm = this.submitForm.bind(this);
     this.setState = this.setState.bind(this);
     this.uploadImg = this.uploadImg.bind(this);
+    this.createPost = this.createPost.bind(this);
   }
 
   handleChange(e){
@@ -50,28 +53,45 @@ class PostForm extends React.Component {
     e.preventDefault();
     const { post } = this.state;
     const history = this.props.history;
-    let that = this;
-    this.props.createPost(post)
-      .then((res) => {
-        const { key } = res.post;
-        this.uploadImg(key);
-        history.push('/');
-    });
+    const key = newKey();
+
+    this.uploadImg(key);
+    this.props.createPost(post);
+    debugger
+    //   .then((res) => {
+    //     const { key } = res.post;
+    //     // history.push('/');
+    // });
+
   }
+
+  // ✅ create new post key
+  // upload photos by key
+  // get photos url
+  // add urls to state
+  // create new post by key
 
   uploadImg(postID){
     const { files } = this.state.preview;
     files.forEach(file => {
-      this.props.upload(file, postID);
-      this.setState({ images: this.state.images.concat(file.name)});
+      const url = this.props.upload(file, postID)
+        .then(res => {
+          this.setState({ images: this.state.images.concat(res) });
+          this.createPost(postID);
+        });
     });
-    const images = { postID, images: this.state.images };
-    const postUpd = {
-                      title: this.state.post.title,
-                      body: this.state.post.body,
-                      images
-                    };
-    return this.props.addDataToPost(postUpd, postID);
+  }
+
+  createPost(postID){
+    const post = {
+                  title: this.state.post.title,
+                  body: this.state.post.body,
+                  images: this.state.images,
+                };
+    return this.props.addDataToPost(post, postID)
+      .then(() => {
+        this.props.history.push('/');
+      })
   }
 
   render(){

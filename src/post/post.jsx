@@ -13,30 +13,26 @@ const Post = ({ id, post, removePost, goToEditPost, images }) => {
     if(!images){
       return null;
     } else {
-      const arr = images.images;
-      debugger
       return (
         <div>
-          { arr.map((name, i) =>  <img
+          { images.map((name, i) =>  <img
             key={i}
             width='150px'
-            src={getUrl(name, id)} /> )}
+            src={name} /> )}
         </div>
       )
-
     }
-
-
   };
-  // debugger
+
+  
   return (
     <div>
       <h5>{title}</h5>
       <h6>{date}, {time}</h6>
       <p>{body}</p>
+      {getImages()}
       <button onClick={() => removePost(id)}>✕</button>
       <button onClick={() => goToEditPost(id)}>✎</button>
-      {getImages()}
     </div>
   );
 };

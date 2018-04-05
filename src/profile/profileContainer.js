@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     login: authUser => dispatch(login(authUser)),
     createPost: post => dispatch(createPost(post)),
     upload: (images, postID) => dispatch(upload(images, postID)),
-    addDataToPost: (postID, postUpd) => dispatch(addDataToPost(postID, postUpd)),
+    addDataToPost: (postUpd, postID) => dispatch(addDataToPost(postUpd, postID)),
   };
 };
 
