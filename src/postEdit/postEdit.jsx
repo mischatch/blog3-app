@@ -1,3 +1,4 @@
+import { deleteImg } from '../firebase/storage';
 import React from 'react';
 
 class PostEdit extends React.Component {
@@ -12,6 +13,7 @@ class PostEdit extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.deleteImg = this.deleteImg.bind(this);
   }
 
   componentWillMount(){
@@ -48,6 +50,18 @@ class PostEdit extends React.Component {
       });
   }
 
+  deleteImg(e){
+    debugger
+    const key = Object.keys(this.props.post);
+    const src = e.target.parentElement.children[1].src;
+    const name = decodeURIComponent(src).slice(76 + key[0].length).slice(0, 41);
+    deleteImg(name, key)
+      .then((res) => {
+        debugger
+        this.state.images
+      });
+  }
+
 
   render(){
     const id = this.props.history.location.pathname.slice(7);
@@ -77,7 +91,11 @@ class PostEdit extends React.Component {
           <div className='imgs'>
               { images.map((name, i) =>
                 <div className='imgWrapper' key={i}>
-                  <div className='x'>✕</div>
+                  <div
+                    className='x'
+                    name={name}
+                    onClick={this.deleteImg}
+                    >✕</div>
                   <img
                     title="title"
                     key={i}

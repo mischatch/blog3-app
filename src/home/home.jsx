@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase';
+import { deletePostPhotos } from '../firebase/storage';
 import Post from '../post/post';
 
 class Home extends Component {
@@ -30,7 +31,7 @@ class Home extends Component {
   removePost(id){
     this.props.deletePost(id);
     // remove images
-    debugger
+    deletePostPhotos(id); 
   }
 
   goToEditPost(id){

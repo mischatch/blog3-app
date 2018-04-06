@@ -55,6 +55,7 @@ export const removePost = (id) => {
 };
 
 export const postEdit = (post, id) => {
+  debugger
   return posts.child(id).update(post)
     .then(() => {
       return getPostById(id);

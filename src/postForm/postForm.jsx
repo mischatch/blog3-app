@@ -65,6 +65,9 @@ class PostForm extends React.Component {
         .then(res => {
           this.setState({ images: this.state.images.concat(res) });
           this.createPost(postID);
+        })
+        .then(() => {
+          this.props.history.push('/');
         });
     });
   }
@@ -75,10 +78,8 @@ class PostForm extends React.Component {
                   body: this.state.post.body,
                   images: this.state.images,
                 };
-    return this.props.addDataToPost(post, postID)
-      .then(() => {
-        this.props.history.push('/');
-      });
+    return this.props.addDataToPost(post, postID);
+
   }
 
   render(){

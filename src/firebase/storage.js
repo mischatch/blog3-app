@@ -21,3 +21,11 @@ export const getUrl = (name, id) => {
   return storageRef.child(`images/${id}/${name}`).getDownloadURL()
           .then(res => res);
 };
+
+export const deleteImg = (name, id) => {
+  return storageRef.child(`images/${id}/${name}`).delete();
+};
+
+export const deletePostPhotos = (id) => {
+  return storageRef.child(`images/${id}/`).delete();
+};

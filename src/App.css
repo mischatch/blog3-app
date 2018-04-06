@@ -24,6 +24,11 @@
   border-radius: 3px;
   color: white;
   opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.x:hover {
+  cursor: pointer;
 }
 
 .imgWrapper {
