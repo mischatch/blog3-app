@@ -14,3 +14,26 @@
 .nav-container > span, a {
   margin-left: 30px;
 }
+
+.x {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: grey;
+  padding: 0px 6px;
+  border-radius: 3px;
+  color: white;
+  opacity: 0;
+}
+
+.imgWrapper {
+  position: relative;
+}
+
+.imgs {
+  display: flex;
+}
+
+.imgWrapper:hover .x {
+  opacity: 1;
+}

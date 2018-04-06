@@ -56,7 +56,6 @@ class PostForm extends React.Component {
     const key = newKey();
 
     this.uploadImg(key);
-    // this.props.createPost(post);
   }
 
   uploadImg(postID){

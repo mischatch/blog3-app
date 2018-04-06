@@ -7,6 +7,7 @@ class PostEdit extends React.Component {
     this.state = {
       title: this.props.post.title,
       body: this.props.post.body,
+      images: this.props.post.images,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,10 +22,11 @@ class PostEdit extends React.Component {
 
   componentWillReceiveProps(nextProps){
     const id = this.props.history.location.pathname.slice(7);
-    const { title, body } = nextProps.post[id];
+    const { title, body, images } = nextProps.post[id];
     this.setState({
       title,
       body,
+      images,
     });
   }
 
@@ -52,7 +54,8 @@ class PostEdit extends React.Component {
     if(!this.state.title || !this.state.body){
       return null;
     }
-
+    const { images } = this.state;
+    let disp = 'none';
     return (
       <div>
         <h3>Edit Post</h3>
@@ -71,6 +74,18 @@ class PostEdit extends React.Component {
             placeholder="Enter Title"
             onChange={this.handleChange}
             />
+          <div className='imgs'>
+              { images.map((name, i) =>
+                <div className='imgWrapper' key={i}>
+                  <div className='x'>✕</div>
+                  <img
+                    title="title"
+                    key={i}
+                    width='150px'
+                    src={name} />
+                </div>
+            )}
+            </div>
           <button type="submit" onClick={this.submitForm}>Edit</button>
         </form>
       </div>

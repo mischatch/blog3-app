@@ -4,6 +4,7 @@ import PostEdit from './postEdit';
 import { editPost, getOnePost } from '../actions/post_actions';
 
 const mapStateToProps = ({ posts }, ownProps) => {
+  debugger
   return {
     post: posts.posts,
   };
