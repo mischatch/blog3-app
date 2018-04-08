@@ -9,13 +9,12 @@ import PostEditContainer from './postEdit/postEditContainer';
 import NotFound from './404/notFound';
 import './App.css';
 
-const test = 'test';
 
 const App = () =>
 
       <Router>
         <div>
-          <NavigationContainer test={test}/>
+          <NavigationContainer />
           <Switch>
             <Route exact path='/' component={HomeContainer} />
             <Route exact path='/login' component={LoginFormContainer} />

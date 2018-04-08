@@ -22,3 +22,6 @@ yarn-error.log*
 
 src/config/config.js
 config.js
+
+src/aws/aws-exports.js
+/aws

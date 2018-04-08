@@ -1,6 +1,7 @@
 import React from 'react';
 import { getUrl } from '../firebase/storage';
 import { newKey } from '../firebase/db';
+import { upload } from '../aws/aws-exports';
 
 class PostForm extends React.Component {
   constructor(props){
@@ -51,8 +52,7 @@ class PostForm extends React.Component {
 
   submitForm(e){
     e.preventDefault();
-    const { post } = this.state;
-    const history = this.props.history;
+    // const { post } = this.state;
     const key = newKey();
 
     this.uploadImg(key);
@@ -61,14 +61,15 @@ class PostForm extends React.Component {
   uploadImg(postID){
     const { files } = this.state.preview;
     files.forEach(file => {
-      const url = this.props.upload(file, postID)
-        .then(res => {
-          this.setState({ images: this.state.images.concat(res) });
-          this.createPost(postID);
-        })
-        .then(() => {
-          this.props.history.push('/');
-        });
+      upload(file, postID);
+      // const url = this.props.upload(file, postID)
+      //   .then(res => {
+      //     this.setState({ images: this.state.images.concat(res) });
+      //     this.createPost(postID);
+      //   })
+      //   .then(() => {
+      //     this.props.history.push('/');
+      //   });
     });
   }
 
@@ -122,6 +123,6 @@ class PostForm extends React.Component {
       </div>
     )
   }
-}
+};
 
 export default PostForm;
