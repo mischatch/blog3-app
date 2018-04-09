@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import Profile from './profile';
 import { changePass, resetPass, login } from '../actions/session_actions';
 import { createPost, addDataToPost } from '../actions/post_actions';
-import { upload } from '../actions/images_actions';
+import { createImages } from '../actions/images_actions';
 
 const mapStateToProps = ({ session }) => {
   return {
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
     resetPass: email => dispatch(resetPass(email)),
     login: authUser => dispatch(login(authUser)),
     createPost: post => dispatch(createPost(post)),
-    upload: (images, postID) => dispatch(upload(images, postID)),
+    createImages: (images, postID) => dispatch(createImages(images, postID)),
     addDataToPost: (postUpd, postID) => dispatch(addDataToPost(postUpd, postID)),
   };
 };

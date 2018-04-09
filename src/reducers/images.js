@@ -29,3 +29,10 @@ const imagesReducer = (state = nullImages, action) => {
 };
 
 export default imagesReducer;
+
+
+// images: [
+//   { name1: url1 }
+//   { name2: url2 }
+//   { name3: url3 }
+// ]

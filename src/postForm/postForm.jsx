@@ -61,26 +61,23 @@ class PostForm extends React.Component {
   uploadImg(postID){
     const { files } = this.state.preview;
     files.forEach(file => {
-      upload(file, postID);
-      // const url = this.props.upload(file, postID)
-      //   .then(res => {
-      //     this.setState({ images: this.state.images.concat(res) });
-      //     this.createPost(postID);
-      //   })
-      //   .then(() => {
-      //     this.props.history.push('/');
-      //   });
+      upload(file, postID)
+        .then(res => {
+          debugger
+          this.setState({ images: this.state.images.concat(res) });
+          this.createPost(postID);
+        })
+        .then(() => {
+          this.props.history.push('/');
+        });
     });
   }
 
   createPost(postID){
-    const post = {
-                  title: this.state.post.title,
-                  body: this.state.post.body,
-                  images: this.state.images,
-                };
-    return this.props.addDataToPost(post, postID);
-
+    const { post, images } = this.state;
+    debugger
+    this.props.addDataToPost(post, postID);
+    this.props.createImages(images, postID);
   }
 
   render(){

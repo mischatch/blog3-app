@@ -1,4 +1,4 @@
-import { storage } from '../firebase';
+import { storage, db } from '../firebase';
 
 export const RECEIVE_IMAGES = "RECEIVE_IMAGES";
 export const RECEIVE_ALL_IMAGES = "RECEIVE_ALL_IMAGES";
@@ -18,6 +18,13 @@ export const receiveAllImages = images => {
   };
 };
 
+
+export const createImages = (images, postID) => {
+  debugger
+  return (
+    db.createImages(images, postID)
+  );
+};
 
 
 

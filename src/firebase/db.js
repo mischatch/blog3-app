@@ -1,4 +1,4 @@
-import { db, posts } from './firebase';
+import { db, posts, images } from './firebase';
 import * as firebase from 'firebase';
 
 
@@ -60,4 +60,17 @@ export const postEdit = (post, id) => {
     .then(() => {
       return getPostById(id);
     });
+};
+
+
+
+// ------------ images ---------------
+
+export const createImages = (images, postID) => {
+  debugger
+  return db.ref('images/' + postID).set({ images })
+          .then(res => {
+            debugger
+            return res;
+          })
 };
