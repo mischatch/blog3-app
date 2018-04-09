@@ -19,6 +19,7 @@ const imagesReducer = (state = nullImages, action) => {
     case RECEIVE_ALL_IMAGES : {
       let all = { images: action.images };
       nextState = merge({}, state, all);
+      // debugger
       return nextState;
     }
     default:

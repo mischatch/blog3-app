@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { firebase } from '../firebase';
 import { deletePostPhotos } from '../firebase/storage';
 import Post from '../post/post';
+import isEmpty from 'lodash';
 
 class Home extends Component {
   constructor(props){
@@ -19,8 +20,8 @@ class Home extends Component {
        authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
        });
 
-    // this.props.getAllPosts();
-    // this.props.getAllImages();
+    this.props.getAllPosts();
+    this.props.getAllImages();
   }
 
   componentWillMount(){
@@ -41,7 +42,9 @@ class Home extends Component {
   postsToRender(){
     // const { users } = this.props;
     const { posts, images } = this.props;
+    debugger
     if(!posts){
+    // if(Object.keys(posts).length === 0 && Object.keys(images).length === 0){
       return (
         <div>
           <h1>Home Page</h1>

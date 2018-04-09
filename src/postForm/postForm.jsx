@@ -53,32 +53,36 @@ class PostForm extends React.Component {
 
   submitForm(e){
     e.preventDefault();
-    // const { post } = this.state;
+
     const key = newKey();
 
-    this.uploadImg(key);
+    this.uploadImg(key); // to aws
+    this.createPost(key); // firebase posts
+    // this.props.history.push('/');
+
   }
 
-  uploadImg(postID){
+  uploadImg (postID){
     const { files } = this.state.preview;
-    files.forEach(file => {
-      upload(file, postID)
-        .then(res => {
-          debugger
+      files.forEach(async (file, i) => {
+          const res = await upload(file, postID);
+          // debugger
           this.setState({ images: this.state.images.concat(res) });
-          this.createPost(postID);
-        })
-        .then(() => {
-          this.props.history.push('/');
-        });
-    });
+          if(i === files.length - 1){
+            debugger
+            const { images } = this.state;
+            this.props.createImages(images, postID); // firebase images
+            this.props.history.push('/');
+          }
+      })
+      // debugger
   }
 
   createPost(postID){
-    const { post, images } = this.state;
+    debugger
+    const { post } = this.state;
     post.createdAt = firebase.database.ServerValue.TIMESTAMP;
     this.props.addDataToPost(post, postID);
-    this.props.createImages(images, postID);
   }
 
   render(){

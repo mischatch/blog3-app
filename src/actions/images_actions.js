@@ -23,6 +23,7 @@ export const createImages = (images, postID) => dispatch => {
   return (
     db.createImages(images, postID)
       .then(res => {
+        debugger
       })
   );
 };
@@ -42,7 +43,8 @@ export const createImages = (images, postID) => dispatch => {
 export const getAllImages = () => dispatch => {
   return (
     db.getAllImages()
-      .then(images => {
+      .then((images) => {
+        // debugger
         dispatch(receiveAllImages(images));
       })
   );

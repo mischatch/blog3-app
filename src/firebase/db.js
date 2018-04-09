@@ -55,7 +55,7 @@ export const removePost = (id) => {
 };
 
 export const postEdit = (post, id) => {
-  debugger
+  // debugger
   return posts.child(id).update(post)
     .then(() => {
       return getPostById(id);
@@ -67,8 +67,10 @@ export const postEdit = (post, id) => {
 // ------------ images ---------------
 
 export const createImages = (images, postID) => {
+  // debugger
   return db.ref('images/' + postID).set({ images })
           .then(res => {
+            // debugger
             return res;
           });
 };
@@ -77,6 +79,7 @@ export const createImages = (images, postID) => {
 export const getAllImages = () => {
   return db.ref('images').once('value')
     .then(res => {
+      // debugger
       return res.val();
     });
 };

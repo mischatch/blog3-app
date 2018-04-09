@@ -8,6 +8,7 @@ import { getAllImages } from '../actions/images_actions';
 
 
 const mapStateToProps = state => {
+    debugger
     return {
       // users: state.users,
       posts: state.posts.posts,
