@@ -19,19 +19,19 @@ class Home extends Component {
        authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
        });
 
-    this.props.getAllPosts();
+    // this.props.getAllPosts();
     // this.props.getAllImages();
   }
 
   componentWillMount(){
     this.props.getAllPosts();
-    // this.props.getAllImages();
+    this.props.getAllImages();
   }
 
   removePost(id){
     this.props.deletePost(id);
     // remove images
-    deletePostPhotos(id); 
+
   }
 
   goToEditPost(id){
@@ -40,7 +40,7 @@ class Home extends Component {
 
   postsToRender(){
     // const { users } = this.props;
-    const { posts } = this.props;
+    const { posts, images } = this.props;
     if(!posts){
       return (
         <div>
@@ -49,7 +49,7 @@ class Home extends Component {
         </div>
       );
     } else {
-        debugger
+      debugger
         return(
           <div>
             <h1>Home Page</h1>
@@ -57,6 +57,7 @@ class Home extends Component {
               key={key}
               post={posts[key]}
               id={key}
+              images={images[key]}
               removePost={this.removePost}
               goToEditPost={this.goToEditPost}
               />) }

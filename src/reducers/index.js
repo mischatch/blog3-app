@@ -9,6 +9,7 @@ import imagesReducer from './images';
 const rootReducer = combineReducers({
   session: SessionReducer,
   posts: postsReducer,
+  images: imagesReducer,
   // users: UsersReducer,
 });
 

@@ -9,22 +9,23 @@ const Post = ({ id, post, removePost, goToEditPost, images }) => {
 
 
   const getImages = () => {
-    const { images } = post;
     if(!images){
       return null;
     } else {
+      debugger
+      let arr = images.images;
       return (
         <div>
-          { images.map((name, i) =>  <img
+          { arr.map((img, i) =>  <img
             key={i}
             width='150px'
-            src={name} /> )}
+            src={img.location} /> )}
         </div>
       )
     }
   };
 
-  
+
   return (
     <div>
       <h5>{title}</h5>

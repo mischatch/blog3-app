@@ -2,6 +2,7 @@ import React from 'react';
 import { getUrl } from '../firebase/storage';
 import { newKey } from '../firebase/db';
 import { upload } from '../aws/aws-exports';
+import * as firebase from 'firebase';
 
 class PostForm extends React.Component {
   constructor(props){
@@ -75,7 +76,7 @@ class PostForm extends React.Component {
 
   createPost(postID){
     const { post, images } = this.state;
-    debugger
+    post.createdAt = firebase.database.ServerValue.TIMESTAMP;
     this.props.addDataToPost(post, postID);
     this.props.createImages(images, postID);
   }

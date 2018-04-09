@@ -19,29 +19,29 @@ export const receiveAllImages = images => {
 };
 
 
-export const createImages = (images, postID) => {
-  debugger
+export const createImages = (images, postID) => dispatch => {
   return (
     db.createImages(images, postID)
+      .then(res => {
+      })
   );
 };
 
 
 
-export const upload = (file, postID) => dispatch => {
-  return (
-    storage.updloadFiles(file, postID)
-      // .then(images => {
-      //   dispatch(receiveImages(images));
-      // })
-  );
-};
+// export const upload = (file, postID) => dispatch => {
+//   return (
+//     storage.updloadFiles(file, postID)
+//       // .then(images => {
+//       //   dispatch(receiveImages(images));
+//       // })
+//   );
+// };
 
 
 export const getAllImages = () => dispatch => {
-  debugger
   return (
-    storage.fetchAllImages()
+    db.getAllImages()
       .then(images => {
         dispatch(receiveAllImages(images));
       })
