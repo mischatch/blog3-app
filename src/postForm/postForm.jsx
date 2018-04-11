@@ -71,7 +71,10 @@ class PostForm extends React.Component {
           if(i === files.length - 1){
             debugger
             const { images } = this.state;
-            this.props.createImages(images, postID); // firebase images
+            // this.props.createImages(images, postID); // firebase images
+            const { post } = this.state;
+            post.images = images;
+            this.props.addDataToPost(post, postID);
             this.props.history.push('/');
           }
       })
@@ -82,6 +85,7 @@ class PostForm extends React.Component {
     debugger
     const { post } = this.state;
     post.createdAt = firebase.database.ServerValue.TIMESTAMP;
+    post.images = [];
     this.props.addDataToPost(post, postID);
   }
 

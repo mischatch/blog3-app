@@ -1,8 +1,8 @@
 import React from 'react';
 import { getUrl } from '../firebase/storage';
 
-const Post = ({ id, post, removePost, goToEditPost, images }) => {
-  const { body, title, createdAt } = post;
+const Post = ({ id, post, removePost, goToEditPost }) => {
+  const { body, title, createdAt, images } = post;
   const date = new Date(createdAt).toLocaleDateString();
   const time = new Date(createdAt).toLocaleTimeString();
 
@@ -13,11 +13,10 @@ const Post = ({ id, post, removePost, goToEditPost, images }) => {
       return null;
     } else {
       debugger
-      let arr = images.images;
       return (
         <div>
-          { arr.map((img, i) =>  <img
-            key={i}
+          { images.map((img) =>  <img
+            key={img.key}
             width='150px'
             src={img.location} /> )}
         </div>

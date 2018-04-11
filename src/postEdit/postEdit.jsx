@@ -5,10 +5,11 @@ class PostEdit extends React.Component {
   constructor(props){
     super(props);
 
+    // debugger
     this.state = {
       title: this.props.post.title,
       body: this.props.post.body,
-      images: this.props.post.images,
+      images: this.props.images,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,9 +23,17 @@ class PostEdit extends React.Component {
     this.props.getOnePost(id);
   }
 
+  // componentDidMount(){
+  //   const id = this.props.history.location.pathname.slice(7);
+  //   this.props.getPostImages(id);
+  //   this.setState({images: this.props.images})
+  // }
+
   componentWillReceiveProps(nextProps){
     const id = this.props.history.location.pathname.slice(7);
     const { title, body, images } = nextProps.post[id];
+    // const { images } = nextProps.images[id];
+    debugger
     this.setState({
       title,
       body,
@@ -70,6 +79,7 @@ class PostEdit extends React.Component {
     }
     const { images } = this.state;
     let disp = 'none';
+    debugger
     return (
       <div>
         <h3>Edit Post</h3>
@@ -89,18 +99,18 @@ class PostEdit extends React.Component {
             onChange={this.handleChange}
             />
           <div className='imgs'>
-              { images.map((name, i) =>
-                <div className='imgWrapper' key={i}>
+              { images.map((image) =>
+                <div className='imgWrapper' key={image.key}>
                   <div
                     className='x'
-                    name={name}
+                    name={image.key}
                     onClick={this.deleteImg}
                     >✕</div>
                   <img
                     title="title"
-                    key={i}
+                    key={image.key}
                     width='150px'
-                    src={name} />
+                    src={image.location} />
                 </div>
             )}
             </div>

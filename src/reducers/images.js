@@ -12,8 +12,10 @@ const imagesReducer = (state = nullImages, action) => {
   let nextState;
   switch(action.type) {
     case RECEIVE_IMAGES : {
-      // let newPost;
-      // nextState = merge({}, state, newPost);
+      // debugger
+      let postImages = {images: {}};
+      postImages.images[action.images.key] = action.images.images;
+      nextState = merge({}, state, postImages);
       return nextState;
     }
     case RECEIVE_ALL_IMAGES : {

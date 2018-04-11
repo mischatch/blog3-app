@@ -83,3 +83,11 @@ export const getAllImages = () => {
       return res.val();
     });
 };
+
+export const getPostImagesById = (id) => {
+    return images.child(`${id}`).once('value')
+      .then(snap => {
+        const images = snap.val();
+        return { images, key: id};
+      });
+};

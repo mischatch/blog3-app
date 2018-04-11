@@ -60,7 +60,6 @@ class Home extends Component {
               key={key}
               post={posts[key]}
               id={key}
-              images={images[key]}
               removePost={this.removePost}
               goToEditPost={this.goToEditPost}
               />) }

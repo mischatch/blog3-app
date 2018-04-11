@@ -12,7 +12,7 @@ const mapStateToProps = state => {
     return {
       // users: state.users,
       posts: state.posts.posts,
-      images: state.images.images,
+      // images: state.images.images,
     };
 };
 
