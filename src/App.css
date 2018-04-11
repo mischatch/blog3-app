@@ -42,3 +42,16 @@
 .imgWrapper:hover .x {
   opacity: 1;
 }
+
+.post {
+  background: #e3eef9;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #c1c9d2;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.post > button {
+  margin-right: 10px;
+}

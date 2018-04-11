@@ -26,7 +26,7 @@ const Post = ({ id, post, removePost, goToEditPost }) => {
 
 
   return (
-    <div>
+    <div  className='post'>
       <h5>{title}</h5>
       <h6>{date}, {time}</h6>
       <p>{body}</p>
