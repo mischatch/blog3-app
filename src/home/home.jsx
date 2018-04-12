@@ -14,11 +14,11 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const { onSetAuthUser } = this.props;
-
-    firebase.auth.onAuthStateChanged(authUser => {
-       authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
-       });
+    // const { onSetAuthUser } = this.props;
+    //
+    // firebase.auth.onAuthStateChanged(authUser => {
+    //    authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
+    //    });
 
     this.props.getAllPosts();
     this.props.getAllImages();

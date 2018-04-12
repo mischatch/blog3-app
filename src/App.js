@@ -8,6 +8,8 @@ import ProfileContainer from './profile/profileContainer';
 import PostEditContainer from './postEdit/postEditContainer';
 import NotFound from './404/notFound';
 import './App.css';
+import { AuthRoute, ProtectedRoute } from './util/route_util';
+
 
 
 const App = () =>
@@ -17,9 +19,9 @@ const App = () =>
           <NavigationContainer />
           <Switch>
             <Route exact path='/' component={HomeContainer} />
-            <Route exact path='/login' component={LoginFormContainer} />
-            <Route exact path='/signup' component={SignUpContainer} />
-            <Route exact path='/profile' component={ProfileContainer} />
+            <AuthRoute exact path='/login' component={LoginFormContainer} />
+            <AuthRoute exact path='/signup' component={SignUpContainer} />
+            <ProtectedRoute exact path='/profile' component={ProfileContainer} />
             <Route exact path='/posts/:postId' component={PostEditContainer} />
             <Route component={NotFound} />
           </Switch>
