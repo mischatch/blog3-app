@@ -39,7 +39,9 @@ class Navigation extends React.Component{
                   </button>
                 </div>);
       } else {
-        return (<div></div>)
+        return (<div>
+                  <Link to='/'>Home</Link>
+                </div>)
       }
     } else {
       return (

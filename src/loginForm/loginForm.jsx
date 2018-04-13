@@ -33,7 +33,13 @@ class LoginForm extends React.Component {
 
   showErrors(){
     if(this.state.error){
-      return this.state.error.message;
+      debugger
+      return (
+        <ul>
+          {this.state.error.message}
+        </ul>
+
+      )
     }
   }
 

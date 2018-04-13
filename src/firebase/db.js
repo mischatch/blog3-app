@@ -46,6 +46,9 @@ export const getAllPosts = () => {
   return db.ref('posts').once('value')
     .then(res => {
       return res.val();
+    })
+    .catch(err => {
+      console.log(err);
     });
   };
 
@@ -81,6 +84,9 @@ export const getAllImages = () => {
     .then(res => {
       // debugger
       return res.val();
+    })
+    .catch(err => {
+      console.log(err);
     });
 };
 

@@ -3,6 +3,7 @@ import { firebase } from '../firebase';
 import { deletePostPhotos } from '../firebase/storage';
 import Post from '../post/post';
 import isEmpty from 'lodash';
+import { deleteAlbum } from '../aws/aws-exports';
 
 class Home extends Component {
   constructor(props){
@@ -21,16 +22,17 @@ class Home extends Component {
     //    });
 
     this.props.getAllPosts();
-    this.props.getAllImages();
+    // this.props.getAllImages();
   }
 
   componentWillMount(){
     this.props.getAllPosts();
-    this.props.getAllImages();
+    // this.props.getAllImages();
   }
 
   removePost(id){
-    this.props.deletePost(id);
+    // this.props.deletePost(id);
+    deleteAlbum(id);
     // remove images
 
   }
