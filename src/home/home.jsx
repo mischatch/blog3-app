@@ -44,7 +44,7 @@ class Home extends Component {
   postsToRender(){
     // const { users } = this.props;
     const { posts, images } = this.props;
-    debugger
+    // debugger
     if(!posts){
     // if(Object.keys(posts).length === 0 && Object.keys(images).length === 0){
       return (
@@ -54,7 +54,7 @@ class Home extends Component {
         </div>
       );
     } else {
-      debugger
+      // debugger
         return(
           <div>
             <h1>Home Page</h1>

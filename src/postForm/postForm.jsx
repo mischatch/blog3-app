@@ -1,7 +1,7 @@
 import React from 'react';
 import { getUrl } from '../firebase/storage';
 import { newKey } from '../firebase/db';
-import { upload } from '../aws/aws-exports';
+import { upload, createAlbum } from '../aws/aws-exports';
 import * as firebase from 'firebase';
 
 class PostForm extends React.Component {
@@ -26,6 +26,7 @@ class PostForm extends React.Component {
     this.setState = this.setState.bind(this);
     this.uploadImg = this.uploadImg.bind(this);
     this.createPost = this.createPost.bind(this);
+    this.createAlb = this.createAlb.bind(this);
   }
 
   handleChange(e){
@@ -62,22 +63,30 @@ class PostForm extends React.Component {
 
   }
 
+  createAlb(){
+    const key = newKey();
+    createAlbum(key);
+  }
+
+
+
   uploadImg (postID){
     const { files } = this.state.preview;
-      files.forEach(async (file, i) => {
-          const res = await upload(file, postID);
-          // debugger
-          this.setState({ images: this.state.images.concat(res) });
-          if(i === files.length - 1){
-            debugger
-            const { images } = this.state;
-            // this.props.createImages(images, postID); // firebase images
-            const { post } = this.state;
-            post.images = images;
-            this.props.addDataToPost(post, postID);
-            this.props.history.push('/');
-          }
-      })
+    files.forEach(async (file, i) => {
+      await createAlbum(postID);
+      const res = await upload(file, postID);
+      // debugger
+      this.setState({ images: this.state.images.concat(res) });
+      if(i === files.length - 1){
+        debugger
+        const { images } = this.state;
+        // this.props.createImages(images, postID); // firebase images
+        const { post } = this.state;
+        post.images = images;
+        this.props.addDataToPost(post, postID);
+        this.props.history.push('/');
+      }
+    })
       // debugger
   }
 
@@ -126,6 +135,10 @@ class PostForm extends React.Component {
                                       key={i}
                                       width='150px'
                                       src={url} />)}
+        <button
+          type='submit'
+          onClick={this.createAlb}
+          >create album</button>
       </div>
     )
   }

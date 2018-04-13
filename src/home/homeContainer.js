@@ -8,7 +8,7 @@ import { getAllPosts, deletePost } from '../actions/post_actions';
 
 
 const mapStateToProps = state => {
-    debugger
+    // debugger
     return {
       // users: state.users,
       posts: state.posts.posts,

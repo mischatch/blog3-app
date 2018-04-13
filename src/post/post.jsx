@@ -12,7 +12,7 @@ const Post = ({ id, post, removePost, goToEditPost }) => {
     if(!images){
       return null;
     } else {
-      debugger
+      // debugger
       return (
         <div>
           { images.map((img) =>  <img
