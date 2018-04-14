@@ -33,8 +33,6 @@ class Home extends Component {
   removePost(id){
     // this.props.deletePost(id);
     deleteAlbum(id);
-    // remove images
-
   }
 
   goToEditPost(id){

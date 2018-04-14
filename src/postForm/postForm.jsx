@@ -63,17 +63,17 @@ class PostForm extends React.Component {
 
   }
 
-  createAlb(){
-    const key = newKey();
-    createAlbum(key);
-  }
+  // createAlb(){
+  //   const key = newKey();
+  //   createAlbum(key);
+  // }
 
 
 
   uploadImg (postID){
     const { files } = this.state.preview;
     files.forEach(async (file, i) => {
-      await createAlbum(postID);
+      // await createAlbum(postID);
       const res = await upload(file, postID);
       // debugger
       this.setState({ images: this.state.images.concat(res) });
