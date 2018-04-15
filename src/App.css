@@ -52,6 +52,10 @@
   width: fit-content;
 }
 
-.post > button {
+.post > div > button {
   margin-right: 10px;
+}
+
+.hidden {
+  display: none;
 }

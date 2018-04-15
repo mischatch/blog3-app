@@ -1,4 +1,5 @@
-import { deleteImg } from '../firebase/storage';
+import { deleteImg, postEdit } from '../firebase/db';
+import { deleteImage } from '../aws/aws-exports';
 import React from 'react';
 
 class PostEdit extends React.Component {
@@ -52,23 +53,19 @@ class PostEdit extends React.Component {
     e.preventDefault();
     const id = this.props.history.location.pathname.slice(7);
     const post = this.state;
-    debugger
     this.props.editPost(post, id)
       .then(() => {
         this.props.history.push('/');
       });
   }
 
-  deleteImg(e){
-    debugger
-    const key = Object.keys(this.props.post);
-    const src = e.target.parentElement.children[1].src;
-    const name = decodeURIComponent(src).slice(76 + key[0].length).slice(0, 41);
-    deleteImg(name, key)
-      .then((res) => {
-        debugger
-        this.state.images
-      });
+  deleteImg(e, id){
+    const key = this.props.match.params.postId;
+    const imagesUpd = this.state.images.filter(image => image.Key !== id);
+    this.setState({ images: this.state.images = imagesUpd }); // Update State
+    deleteImage(id); // from aws s3
+    const post = this.state;
+    postEdit(post, key); // update firebase DB
   }
 
 
@@ -103,14 +100,15 @@ class PostEdit extends React.Component {
                 <div className='imgWrapper' key={image.key}>
                   <div
                     className='x'
-                    name={image.key}
-                    onClick={this.deleteImg}
+                    key={image.Key.split('/')[1]}
+                    name={`${image.Key}`}
+                    onClick={(e) => this.deleteImg(e, image.key)}
                     >✕</div>
                   <img
                     title="title"
                     key={image.key}
                     width='150px'
-                    src={image.location} />
+                    src={image.Location} />
                 </div>
             )}
             </div>

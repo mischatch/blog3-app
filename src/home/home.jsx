@@ -40,7 +40,7 @@ class Home extends Component {
   }
 
   postsToRender(){
-    const { posts, images } = this.props;
+    const { posts, images, loggedIn } = this.props;
     if(!posts){
       return (
         <div>
@@ -56,6 +56,7 @@ class Home extends Component {
               key={key}
               post={posts[key]}
               id={key}
+              loggedIn={loggedIn}
               removePost={this.removePost}
               goToEditPost={this.goToEditPost}
               />) }

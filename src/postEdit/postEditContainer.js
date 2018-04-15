@@ -5,10 +5,11 @@ import { editPost, getOnePost } from '../actions/post_actions';
 import { getPostImages } from '../actions/images_actions';
 
 const mapStateToProps = ({ posts, images }, ownProps) => {
+  const key = ownProps.match.params.postId;
   // debugger
   return {
     post: posts.posts,
-    // images: images.images,
+    key: key,
   };
 };
 

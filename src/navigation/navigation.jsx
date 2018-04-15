@@ -8,25 +8,25 @@ class Navigation extends React.Component{
 
     this.showLink = this.showLink.bind(this);
     this.logout = this.logout.bind(this);
+    this.login = this.login.bind(this);
   }
 
   componentDidMount(){
     const { onSetAuthUser } = this.props;
-    firebase.auth.onAuthStateChanged(authUser => {
-       authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
-       });
-  }
 
-  // componentWillReceiveProps(newProps){
-  // }
+  }
 
   logout(e){
     e.preventDefault();
-
     this.props.logout()
       .then(() => {
         this.props.history.push('/');
       });
+  }
+
+  login(e){
+    e.preventDefault();
+    this.props.history.push('/login');
   }
 
 
@@ -34,8 +34,8 @@ class Navigation extends React.Component{
     if(!this.props.loggedIn){
       if(this.props.history.location.pathname !== '/login'){
         return (<div>
-                  <button className="button button-outline">
-                    <Link to="/login">Login</Link>
+                  <button onClick={this.login}className="button button-outline">
+                    Login
                   </button>
                 </div>);
       } else {

@@ -1,4 +1,5 @@
 import { storage, db } from '../firebase';
+import { deleteImage } from '../aws/aws-exports';
 
 export const RECEIVE_IMAGES = "RECEIVE_IMAGES";
 export const RECEIVE_ALL_IMAGES = "RECEIVE_ALL_IMAGES";
@@ -39,6 +40,16 @@ export const createImages = (images, postID) => dispatch => {
 //       // })
 //   );
 // };
+
+export const removeImage = imageKey => dispatch => {
+  return (
+    deleteImage(imageKey)
+      .then((res) => {
+        debugger
+        dispatch(receiveImages(res));
+      })
+  );
+};
 
 
 export const getAllImages = () => dispatch => {

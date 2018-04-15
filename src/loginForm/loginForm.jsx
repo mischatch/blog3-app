@@ -22,7 +22,7 @@ class LoginForm extends React.Component {
     const user = { email: email, password: password};
     this.props.login(user)
     .then(() => {
-      this.setState({ email: '', password: '', error: null });
+      // this.setState({ email: '', password: '', error: null });
       history.push('/profile'); //redirect home
     })
     .catch(err => {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { getUrl } from '../firebase/storage';
 
-const Post = ({ id, post, removePost, goToEditPost }) => {
+const Post = ({ id, post, removePost, goToEditPost, loggedIn }) => {
   const { body, title, createdAt, images } = post;
   const date = new Date(createdAt).toLocaleDateString();
   const time = new Date(createdAt).toLocaleTimeString();
-
+  const display = loggedIn? '' : 'hidden';
 
 
   const getImages = () => {
@@ -31,8 +31,10 @@ const Post = ({ id, post, removePost, goToEditPost }) => {
       <h6>{date}, {time}</h6>
       <p>{body}</p>
       {getImages()}
-      <button onClick={() => removePost(id)}>✕</button>
-      <button onClick={() => goToEditPost(id)}>✎</button>
+      <div className={display}>
+        <button onClick={() => removePost(id)}>✕</button>
+        <button onClick={() => goToEditPost(id)}>✎</button>
+      </div>
     </div>
   );
 };

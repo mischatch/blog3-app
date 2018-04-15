@@ -26,6 +26,7 @@ class PostForm extends React.Component {
     this.setState = this.setState.bind(this);
     this.uploadImg = this.uploadImg.bind(this);
     this.createPost = this.createPost.bind(this);
+    this.deleteImg = this.deleteImg.bind(this);
   }
 
   handleChange(e){
@@ -82,6 +83,17 @@ class PostForm extends React.Component {
     this.props.addDataToPost(post, postID);
   }
 
+  deleteImg(e, i){
+    debugger
+    const { preview } = this.state;
+    const newPreview = {files: [], imagePreviewUrl: []};
+    Object.keys(preview).forEach((ele) => {
+      newPreview[ele] = preview[ele].filter((el, idx) => idx !== i);
+    });
+    debugger
+    this.setState({preview: this.state.preview = newPreview});
+  }
+
   render(){
     const preview = this.state.preview.imagePreviewUrl;
     const { title, body } = this.state.post;
@@ -115,12 +127,23 @@ class PostForm extends React.Component {
             disabled={isInvalid}
             onClick={this.submitForm}>Post it</button>
         </form>
-        { preview.map((url, i) => <img
-                                      key={i}
-                                      width='150px'
-                                      src={url} />)}
+        <div className='imgs'>
+          { preview.map((url, i) =>
+            <div className='imgWrapper' key={i}>
+              <div
+                className='x'
+                onClick={(e) => this.deleteImg(e, i)}
+                >✕</div>
+              <img
+                key={i}
+                width='150px'
+                src={url} />
+            </div>
+          )}
+          </div>
+
       </div>
-    )
+    );
   }
 };
 

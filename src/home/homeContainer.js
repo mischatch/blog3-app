@@ -8,9 +8,9 @@ import { getAllPosts, deletePost } from '../actions/post_actions';
 
 
 const mapStateToProps = state => {
-    // debugger
+    debugger
     return {
-      // users: state.users,
+      loggedIn: Boolean(state.session.currentUser),
       posts: state.posts.posts,
       // images: state.images.images,
     };
