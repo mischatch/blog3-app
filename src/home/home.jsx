@@ -31,7 +31,7 @@ class Home extends Component {
   }
 
   removePost(id){
-    // this.props.deletePost(id);
+    this.props.deletePost(id);
     deleteAlbum(id);
   }
 
@@ -40,11 +40,8 @@ class Home extends Component {
   }
 
   postsToRender(){
-    // const { users } = this.props;
     const { posts, images } = this.props;
-    // debugger
     if(!posts){
-    // if(Object.keys(posts).length === 0 && Object.keys(images).length === 0){
       return (
         <div>
           <h1>Home Page</h1>
@@ -52,11 +49,10 @@ class Home extends Component {
         </div>
       );
     } else {
-      // debugger
         return(
           <div>
             <h1>Home Page</h1>
-            { Object.keys(posts).map((key) => <Post
+            { Object.keys(posts).reverse().map((key) => <Post
               key={key}
               post={posts[key]}
               id={key}

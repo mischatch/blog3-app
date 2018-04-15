@@ -26,7 +26,6 @@ class PostForm extends React.Component {
     this.setState = this.setState.bind(this);
     this.uploadImg = this.uploadImg.bind(this);
     this.createPost = this.createPost.bind(this);
-    this.createAlb = this.createAlb.bind(this);
   }
 
   handleChange(e){
@@ -54,44 +53,29 @@ class PostForm extends React.Component {
 
   submitForm(e){
     e.preventDefault();
-
     const key = newKey();
 
     this.uploadImg(key); // to aws
-    this.createPost(key); // firebase posts
-    // this.props.history.push('/');
-
+    this.createPost(key); // to firebase posts
   }
 
-  // createAlb(){
-  //   const key = newKey();
-  //   createAlbum(key);
-  // }
 
-
-
-  uploadImg (postID){
+  uploadImg(postID){
     const { files } = this.state.preview;
     files.forEach(async (file, i) => {
-      // await createAlbum(postID);
       const res = await upload(file, postID);
-      // debugger
       this.setState({ images: this.state.images.concat(res) });
       if(i === files.length - 1){
-        debugger
         const { images } = this.state;
-        // this.props.createImages(images, postID); // firebase images
         const { post } = this.state;
         post.images = images;
         this.props.addDataToPost(post, postID);
         this.props.history.push('/');
       }
     })
-      // debugger
   }
 
   createPost(postID){
-    debugger
     const { post } = this.state;
     post.createdAt = firebase.database.ServerValue.TIMESTAMP;
     post.images = [];
@@ -135,10 +119,6 @@ class PostForm extends React.Component {
                                       key={i}
                                       width='150px'
                                       src={url} />)}
-        <button
-          type='submit'
-          onClick={this.createAlb}
-          >create album</button>
       </div>
     )
   }

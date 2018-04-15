@@ -18,7 +18,7 @@ const Post = ({ id, post, removePost, goToEditPost }) => {
           { images.map((img) =>  <img
             key={img.key}
             width='150px'
-            src={img.location} /> )}
+            src={img.Location} /> )}
         </div>
       )
     }
