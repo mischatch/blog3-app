@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase';
-import { deletePostPhotos } from '../firebase/storage';
 import Post from '../post/post';
-import isEmpty from 'lodash';
 import { deleteAlbum } from '../aws/aws-exports';
 
 class Home extends Component {
@@ -15,19 +13,16 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // const { onSetAuthUser } = this.props;
-    //
-    // firebase.auth.onAuthStateChanged(authUser => {
-    //    authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
-    //    });
+    const { onSetAuthUser } = this.props;
+    firebase.auth.onAuthStateChanged(authUser => {
+       authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
+       });
 
     this.props.getAllPosts();
-    // this.props.getAllImages();
   }
 
   componentWillMount(){
     this.props.getAllPosts();
-    // this.props.getAllImages();
   }
 
   removePost(id){
@@ -40,7 +35,7 @@ class Home extends Component {
   }
 
   postsToRender(){
-    const { posts, images, loggedIn } = this.props;
+    const { posts, loggedIn } = this.props;
     if(!posts){
       return (
         <div>

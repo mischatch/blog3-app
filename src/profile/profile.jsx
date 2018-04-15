@@ -1,3 +1,4 @@
+import { firebase } from '../firebase';
 import React from 'react';
 import PasswordChange from './passwordChange';
 import PasswordReset from './passwordReset';
@@ -15,14 +16,19 @@ class Profile extends React.Component {
     this.renderComponent = this.renderComponent.bind(this);
   }
 
-  // componentDidMount(){
-  //   if(!this.props.loggedIn){
-  //     this.props.history.push('/');
-  //   }
-  // }
+  componentDidMount(){
+    const { onSetAuthUser } = this.props;
+    firebase.auth.onAuthStateChanged(authUser => {
+       authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
+       });
+  }
 
   componentPick(e){
     this.setState({ comp: e.target.value });
+  }
+
+  componentWillReceiveProps(nextProps){
+    debugger
   }
 
   renderComponent(){
@@ -38,6 +44,8 @@ class Profile extends React.Component {
           addDataToPost={this.props.addDataToPost}
           history={this.props.history}
           /> ;
+      default:
+        return null;
     }
   }
 

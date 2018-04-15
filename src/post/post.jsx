@@ -1,5 +1,4 @@
 import React from 'react';
-import { getUrl } from '../firebase/storage';
 
 const Post = ({ id, post, removePost, goToEditPost, loggedIn }) => {
   const { body, title, createdAt, images } = post;
@@ -17,6 +16,7 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn }) => {
         <div>
           { images.map((img) =>  <img
             key={img.key}
+            alt={img.key}
             width='150px'
             src={img.Location} /> )}
         </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 
 class LoginForm extends React.Component {
@@ -46,7 +45,7 @@ class LoginForm extends React.Component {
 
 
   render(){
-    const { email, password, error } = this.state;
+    const { email, password } = this.state;
     const isInvalid = password === '' || email === '';
 
     return (
@@ -70,10 +69,6 @@ class LoginForm extends React.Component {
         <div>
           {this.showErrors()}
         </div>
-
-
-        { /* <Link to='/signup'>SignUp</Link> */}
-
       </div>
     )
   }

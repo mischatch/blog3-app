@@ -1,5 +1,4 @@
 import { RECEIVE_POST, RECEIVE_ALL_POSTS, REMOVE_POST } from '../actions/post_actions';
-import { postsShaper } from './selectors';
 
 import merge from 'lodash/merge';
 

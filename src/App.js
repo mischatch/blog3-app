@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import {createBrowserHistory} from 'history';
 import LoginFormContainer from './loginForm/loginFormContainer';
 import SignUpContainer from './signUp/signUpContainer';
 import HomeContainer from './home/homeContainer';
@@ -10,11 +11,12 @@ import NotFound from './404/notFound';
 import './App.css';
 import { AuthRoute, ProtectedRoute } from './util/route_util';
 
+const browserHistory = createBrowserHistory();
 
 
 const App = () =>
 
-      <Router>
+      <Router hitory={browserHistory}>
         <div>
           <NavigationContainer />
           <Switch>

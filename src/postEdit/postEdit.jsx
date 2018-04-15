@@ -1,4 +1,4 @@
-import { deleteImg, postEdit } from '../firebase/db';
+import { postEdit } from '../firebase/db';
 import { deleteImage } from '../aws/aws-exports';
 import React from 'react';
 
@@ -20,7 +20,6 @@ class PostEdit extends React.Component {
 
   componentWillMount(){
     const id = this.props.history.location.pathname.slice(7);
-    const props = this.props;
     this.props.getOnePost(id);
   }
 
@@ -70,12 +69,11 @@ class PostEdit extends React.Component {
 
 
   render(){
-    const id = this.props.history.location.pathname.slice(7);
+    // const id = this.props.history.location.pathname.slice(7);
     if(!this.state.title || !this.state.body){
       return null;
     }
     const { images } = this.state;
-    let disp = 'none';
     debugger
     return (
       <div>
@@ -106,6 +104,7 @@ class PostEdit extends React.Component {
                     >✕</div>
                   <img
                     title="title"
+                    alt={image.key}
                     key={image.key}
                     width='150px'
                     src={image.Location} />

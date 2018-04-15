@@ -16,7 +16,7 @@ class PasswordChange extends React.Component {
 
   onSubmit(e){
     const { passwordOne } = this.state;
-    const user = { email: this.props.currentUser.email, password: passwordOne};
+    // const user = { email: this.props.currentUser.email, password: passwordOne};
 
     this.props.changePass(passwordOne)
       .then(() => {

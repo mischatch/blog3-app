@@ -13,7 +13,9 @@ class Navigation extends React.Component{
 
   componentDidMount(){
     const { onSetAuthUser } = this.props;
-
+    firebase.auth.onAuthStateChanged(authUser => {
+       authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
+       });
   }
 
   logout(e){

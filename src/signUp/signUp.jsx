@@ -41,7 +41,7 @@ class SignUp extends React.Component {
 
 
   render(){
-    const { email, password, error } = this.state;
+    const { email, password } = this.state;
     const isInvalid = password === '' || email === '';
 
     return (
@@ -66,7 +66,7 @@ class SignUp extends React.Component {
             name="password"
             onChange={e => this.setState({'password': e.target.value})}
             value={this.state.password} />
-          <button  type="submit">Sign Up</button>
+          <button disabled={isInvalid} type="submit">Sign Up</button>
         </form>
         <div>
           {this.showErrors()}

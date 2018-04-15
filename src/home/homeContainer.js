@@ -12,7 +12,6 @@ const mapStateToProps = state => {
     return {
       loggedIn: Boolean(state.session.currentUser),
       posts: state.posts.posts,
-      // images: state.images.images,
     };
 };
 
@@ -21,7 +20,6 @@ const mapDispatchToProps = dispatch => {
     onSetAuthUser: (authUser) => dispatch(receiveCurrentUser(authUser)),
     getAllPosts: () => dispatch(getAllPosts()),
     deletePost: (id) => dispatch(deletePost(id)),
-    // getAllImages: () => dispatch(getAllImages()),
   };
 };
 

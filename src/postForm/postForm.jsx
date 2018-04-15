@@ -1,7 +1,6 @@
 import React from 'react';
-import { getUrl } from '../firebase/storage';
 import { newKey } from '../firebase/db';
-import { upload, createAlbum } from '../aws/aws-exports';
+import { upload } from '../aws/aws-exports';
 import * as firebase from 'firebase';
 
 class PostForm extends React.Component {
@@ -136,6 +135,7 @@ class PostForm extends React.Component {
                 >✕</div>
               <img
                 key={i}
+                alt={i}
                 width='150px'
                 src={url} />
             </div>

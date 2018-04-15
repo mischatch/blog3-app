@@ -31,7 +31,7 @@ class PasswordReset extends React.Component {
 
   render(){
 
-    const { email, error } = this.state;
+    const { email } = this.state;
     const isInvalid = email === '';
     return (
       <div>
