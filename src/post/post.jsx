@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Post = ({ id, post, removePost, goToEditPost, loggedIn }) => {
+const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
   const { body, title, createdAt, images } = post;
   const date = new Date(createdAt).toLocaleDateString();
   const time = new Date(createdAt).toLocaleTimeString();
   const display = loggedIn? '' : 'hidden';
 
 
-  const getImages = () => {
+  const postImages = () => {
     if(!images){
       return null;
     } else {
@@ -18,7 +18,8 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn }) => {
             key={img.key}
             alt={img.key}
             width='150px'
-            src={img.Location} /> )}
+            src={img.Location}
+            onClick={(e) => openModal(e)}/> )}
         </div>
       )
     }
@@ -30,7 +31,7 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn }) => {
       <h5>{title}</h5>
       <h6>{date}, {time}</h6>
       <p>{body}</p>
-      {getImages()}
+      {postImages()}
       <div className={display}>
         <button onClick={() => removePost(id)}>✕</button>
         <button onClick={() => goToEditPost(id)}>✎</button>

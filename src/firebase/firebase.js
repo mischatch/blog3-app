@@ -29,3 +29,8 @@ export {
  posts,
  images,
 };
+
+firebase.auth().onAuthStateChanged((user) => {
+  debugger
+  window.currentUser = user;
+})
