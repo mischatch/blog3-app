@@ -21,6 +21,13 @@ class PostForm extends React.Component {
       images: [],
     };
 
+    this.modules = {
+      toolbar: [
+        [{size: []}],
+        ['bold', 'italic', 'underline'],
+      ]
+    };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.submitForm = this.submitForm.bind(this);
@@ -39,6 +46,7 @@ class PostForm extends React.Component {
   }
 
   handleFile(e){
+    debugger
     e.preventDefault();
     let files = Array.from(e.target.files);
     files.forEach(file => {
@@ -66,6 +74,7 @@ class PostForm extends React.Component {
   uploadImg(postID){
     if(this.state.preview.imagePreviewUrl.length !== 0){
       const { files } = this.state.preview;
+      debugger
       files.forEach(async (file, i) => {
         const res = await upload(file, postID);
         this.setState({ images: this.state.images.concat(res) });
@@ -76,7 +85,7 @@ class PostForm extends React.Component {
           this.props.addDataToPost(post, postID);
           this.props.history.push('/');
         }
-      })  
+      })
     } else {
       this.props.history.push('/');
     };
@@ -109,6 +118,7 @@ class PostForm extends React.Component {
         <h3>Create new post</h3>
         <form>
           <ReactQuill
+            modules={this.modules}
             type="text"
             name="title"
             value={this.state.post.title}
@@ -119,7 +129,7 @@ class PostForm extends React.Component {
             type="text"
             name="body"
             value={this.state.post.body}
-            placeholder="Enter Title"
+            placeholder="Enter Post Text"
             onChange={html => this.handleChange({target: {value: html, name: 'body'}})}
             />
           <input

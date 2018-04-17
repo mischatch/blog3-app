@@ -58,9 +58,9 @@ export const deletePost = id => dispatch => {
 export const editPost = (post, id) => dispatch => {
   return (
     db.postEdit(post, id)
-      .then((post) => {
-        dispatch(receivePost(post));
-      })
+      // .then((post) => {
+      //   dispatch(receivePost(post));
+      // })
   );
 };
 

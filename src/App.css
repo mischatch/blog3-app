@@ -59,3 +59,7 @@
 .hidden {
   display: none;
 }
+
+.quill {
+  margin-bottom: 15px;
+}

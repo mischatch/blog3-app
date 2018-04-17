@@ -1,6 +1,8 @@
 import { postEdit } from '../firebase/db';
 import { deleteImage } from '../aws/aws-exports';
 import React from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 class PostEdit extends React.Component {
   constructor(props){
@@ -13,9 +15,23 @@ class PostEdit extends React.Component {
       images: this.props.images,
     };
 
+    this.modules = {
+      toolbar: [
+        [{size: []}],
+        ['bold', 'italic', 'underline'],
+      ]
+    };
+    this.modules2 = {
+      toolbar: [
+        ['link', 'image', 'video']
+      ]
+    };
+
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.deleteImg = this.deleteImg.bind(this);
+    this.renderImages = this.renderImages.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   componentWillMount(){
@@ -41,8 +57,7 @@ class PostEdit extends React.Component {
     });
   }
 
-  handleChange(e){
-    e.preventDefault();
+  handleChange(e, delta, source, editor){
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -51,7 +66,9 @@ class PostEdit extends React.Component {
   submitForm(e){
     e.preventDefault();
     const id = this.props.history.location.pathname.slice(7);
-    const post = this.state;
+    const { title, body, images } = this.state;
+    const post = this.state.images? this.state : { title, body }; // in case there is no images in post
+
     this.props.editPost(post, id)
       .then(() => {
         this.props.history.push('/');
@@ -67,50 +84,70 @@ class PostEdit extends React.Component {
     postEdit(post, key); // update firebase DB
   }
 
+  renderImages(){
+    if(this.state.images){
+      const { images } = this.state;
+      return(
+        <div className='imgs'>
+            { images.map((image) =>
+              <div className='imgWrapper' key={image.key}>
+                <div
+                  className='x'
+                  key={image.Key.split('/')[1]}
+                  name={`${image.Key}`}
+                  onClick={(e) => this.deleteImg(e, image.key)}
+                  >✕</div>
+                <img
+                  title="title"
+                  alt={image.key}
+                  key={image.key}
+                  width='150px'
+                  src={image.Location} />
+              </div>
+          )}
+          </div>
+      );
+    } else {
+      return (
+        <div> No images added!</div>
+      );
+    }
+  }
+
+  handleFile(e, delta, source, editor){
+    debugger
+  }
+
 
   render(){
     // const id = this.props.history.location.pathname.slice(7);
     if(!this.state.title || !this.state.body){
       return null;
     }
-    const { images } = this.state;
     debugger
     return (
       <div>
         <h3>Edit Post</h3>
         <form>
-          <input
+          <ReactQuill
             type="text"
             name="title"
             value={this.state.title}
             placeholder="Enter Title"
-            onChange={this.handleChange}
+            onChange={html => this.handleChange({target: {value: html, name: 'title'}})}
             />
-          <textarea
+          <ReactQuill
             type="text"
             name="body"
             value={this.state.body}
-            placeholder="Enter Title"
-            onChange={this.handleChange}
+            placeholder="Enter Post Text"
+            onChange={html => this.handleChange({target: {value: html, name: 'body'}})}
             />
-          <div className='imgs'>
-              { images.map((image) =>
-                <div className='imgWrapper' key={image.key}>
-                  <div
-                    className='x'
-                    key={image.Key.split('/')[1]}
-                    name={`${image.Key}`}
-                    onClick={(e) => this.deleteImg(e, image.key)}
-                    >✕</div>
-                  <img
-                    title="title"
-                    alt={image.key}
-                    key={image.key}
-                    width='150px'
-                    src={image.Location} />
-                </div>
-            )}
-            </div>
+          {this.renderImages()}
+          <ReactQuill
+            modules={this.modules2}
+            onChange={html => this.handleFile({target: {value: html, name: 'images'}})}
+            />
           <button type="submit" onClick={this.submitForm}>Edit</button>
         </form>
       </div>
