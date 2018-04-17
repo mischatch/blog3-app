@@ -3,6 +3,7 @@ import { firebase } from '../firebase';
 import Post from '../post/post';
 import { deleteAlbum } from '../aws/aws-exports';
 import Modal from 'react-modal';
+import 'react-quill/dist/quill.snow.css';
 
 const customStyles = {
   content : {

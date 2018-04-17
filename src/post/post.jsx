@@ -28,9 +28,9 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
 
   return (
     <div  className='post'>
-      <h5>{title}</h5>
+      <h5 dangerouslySetInnerHTML={{__html:title}} />
       <h6>{date}, {time}</h6>
-      <p>{body}</p>
+      <p dangerouslySetInnerHTML={{__html:body}} />
       {postImages()}
       <div className={display}>
         <button onClick={() => removePost(id)}>✕</button>

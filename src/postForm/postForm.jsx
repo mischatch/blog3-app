@@ -2,6 +2,8 @@ import React from 'react';
 import { newKey } from '../firebase/db';
 import { upload } from '../aws/aws-exports';
 import * as firebase from 'firebase';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 class PostForm extends React.Component {
   constructor(props){
@@ -28,8 +30,9 @@ class PostForm extends React.Component {
     this.deleteImg = this.deleteImg.bind(this);
   }
 
-  handleChange(e){
-    e.preventDefault();
+  handleChange(e, delta, source, editor){
+    // e.preventDefault();
+    debugger
     const { post } = this.state;
     post[e.target.name] = e.target.value;
     this.setState({ post });
@@ -61,18 +64,22 @@ class PostForm extends React.Component {
 
 
   uploadImg(postID){
-    const { files } = this.state.preview;
-    files.forEach(async (file, i) => {
-      const res = await upload(file, postID);
-      this.setState({ images: this.state.images.concat(res) });
-      if(i === files.length - 1){
-        const { images } = this.state;
-        const { post } = this.state;
-        post.images = images;
-        this.props.addDataToPost(post, postID);
-        this.props.history.push('/');
-      }
-    })
+    if(this.state.preview.imagePreviewUrl.length !== 0){
+      const { files } = this.state.preview;
+      files.forEach(async (file, i) => {
+        const res = await upload(file, postID);
+        this.setState({ images: this.state.images.concat(res) });
+        if(i === files.length - 1){
+          const { images } = this.state;
+          const { post } = this.state;
+          post.images = images;
+          this.props.addDataToPost(post, postID);
+          this.props.history.push('/');
+        }
+      })  
+    } else {
+      this.props.history.push('/');
+    };
   }
 
   createPost(postID){
@@ -101,19 +108,19 @@ class PostForm extends React.Component {
       <div>
         <h3>Create new post</h3>
         <form>
-          <input
+          <ReactQuill
             type="text"
             name="title"
             value={this.state.post.title}
             placeholder="Enter Title"
-            onChange={this.handleChange}
+            onChange={html => this.handleChange({target: {value: html, name: 'title'}})}
             />
-          <textarea
+          <ReactQuill
             type="text"
             name="body"
             value={this.state.post.body}
             placeholder="Enter Title"
-            onChange={this.handleChange}
+            onChange={html => this.handleChange({target: {value: html, name: 'body'}})}
             />
           <input
             type='file'
