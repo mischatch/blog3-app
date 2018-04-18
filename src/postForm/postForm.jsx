@@ -88,7 +88,7 @@ class PostForm extends React.Component {
       })
     } else {
       this.props.history.push('/');
-    };
+    }
   }
 
   createPost(postID){
