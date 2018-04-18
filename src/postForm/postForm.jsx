@@ -38,15 +38,12 @@ class PostForm extends React.Component {
   }
 
   handleChange(e, delta, source, editor){
-    // e.preventDefault();
-    debugger
     const { post } = this.state;
     post[e.target.name] = e.target.value;
     this.setState({ post });
   }
 
   handleFile(e){
-    debugger
     e.preventDefault();
     let files = Array.from(e.target.files);
     files.forEach(file => {
@@ -74,7 +71,6 @@ class PostForm extends React.Component {
   uploadImg(postID){
     if(this.state.preview.imagePreviewUrl.length !== 0){
       const { files } = this.state.preview;
-      debugger
       files.forEach(async (file, i) => {
         const res = await upload(file, postID);
         this.setState({ images: this.state.images.concat(res) });
@@ -99,13 +95,11 @@ class PostForm extends React.Component {
   }
 
   deleteImg(e, i){
-    debugger
     const { preview } = this.state;
     const newPreview = {files: [], imagePreviewUrl: []};
     Object.keys(preview).forEach((ele) => {
       newPreview[ele] = preview[ele].filter((el, idx) => idx !== i);
     });
-    debugger
     this.setState({preview: this.state.preview = newPreview});
   }
 

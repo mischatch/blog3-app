@@ -32,7 +32,6 @@ class LoginForm extends React.Component {
 
   showErrors(){
     if(this.state.error){
-      debugger
       return (
         <ul>
           {this.state.error.message}

@@ -31,6 +31,5 @@ export {
 };
 
 firebase.auth().onAuthStateChanged((user) => {
-  debugger
   window.currentUser = user;
 })

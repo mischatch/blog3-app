@@ -11,7 +11,6 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
     if(!images){
       return null;
     } else {
-      // debugger
       return (
         <div>
           { images.map((img) =>  <img
@@ -28,8 +27,8 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
 
   return (
     <div  className='post'>
-      <h5 dangerouslySetInnerHTML={{__html:title}} />
       <h6>{date}, {time}</h6>
+      <h5 dangerouslySetInnerHTML={{__html:title}} />
       <p dangerouslySetInnerHTML={{__html:body}} />
       {postImages()}
       <div className={display}>

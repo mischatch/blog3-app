@@ -6,7 +6,6 @@ export const RECEIVE_ALL_IMAGES = "RECEIVE_ALL_IMAGES";
 
 
 export const receiveImages = images => {
-  debugger
   return {
     type: RECEIVE_IMAGES,
     images
@@ -24,9 +23,6 @@ export const receiveAllImages = images => {
 export const createImages = (images, postID) => dispatch => {
   return (
     db.createImages(images, postID)
-      // .then(res => {
-      //   // debugger
-      // })
   );
 };
 

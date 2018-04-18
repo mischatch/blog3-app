@@ -8,7 +8,6 @@ class PostEdit extends React.Component {
   constructor(props){
     super(props);
 
-    // debugger
     this.state = {
       title: this.props.title,
       body: this.props.body,
@@ -41,7 +40,6 @@ class PostEdit extends React.Component {
   }
 
   componentWillMount(){
-    debugger
     const { id } = this.props;
     this.props.getOnePost(id);
   }
@@ -53,10 +51,7 @@ class PostEdit extends React.Component {
   // }
 
   componentWillReceiveProps(nextProps){
-    debugger
     const { title, body, images } = nextProps.post;
-    // const { images } = nextProps.images[id];
-    debugger
     this.setState({
       title,
       body,
@@ -74,7 +69,6 @@ class PostEdit extends React.Component {
     e.preventDefault();
     const id = this.props.history.location.pathname.slice(7);
     const { title, body, images, preview } = this.state;
-    debugger
     if (images && preview.files.length === 0){ // if no images were added
       const post = {title, body, images}; // in case there is no images in post
       this.props.editPost(post, id)
@@ -92,13 +86,16 @@ class PostEdit extends React.Component {
     files.forEach(async (file, i) => {
       const res = await upload(file, postID);
       this.setState({ images: this.state.images.concat(res) });
+      const newPreview = this.state.preview;
+      newPreview.imagePreviewUrl.shift();
+      this.setState({ preview : newPreview })
       if(i === files.length - 1){
         const { title, body, images } = this.state;
-        debugger
         const post = { title, body, images };
-        // post.images = images;
-        this.props.addDataToPost(post, postID);
-        this.props.history.push('/');
+        this.props.addDataToPost(post, postID)
+          .then(() => {
+            this.props.history.push('/');
+          });
       }
     })
   }
@@ -159,13 +156,11 @@ class PostEdit extends React.Component {
   }
 
   deletePreviewImg(e, i){
-    debugger
     const { preview } = this.state;
     const newPreview = {files: [], imagePreviewUrl: []};
     Object.keys(preview).forEach((ele) => {
       newPreview[ele] = preview[ele].filter((el, idx) => idx !== i);
     });
-    debugger
     this.setState({preview: this.state.preview = newPreview});
   }
 
@@ -202,7 +197,7 @@ class PostEdit extends React.Component {
             onChange={this.handleFile}
             multiple
             />
-          <button type="submit" onClick={this.submitForm}>Edit</button>
+          <button type="submit" onClick={this.submitForm}>Post</button>
         </form>
         <div className='imgs'>
           { preview.map((url, i) =>

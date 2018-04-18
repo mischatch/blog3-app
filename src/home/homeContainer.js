@@ -8,7 +8,6 @@ import { addDataToPost } from '../actions/post_actions';
 
 
 const mapStateToProps = state => {
-    debugger
     return {
       loggedIn: Boolean(state.session.currentUser),
       posts: state.posts.posts,

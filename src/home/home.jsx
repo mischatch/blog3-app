@@ -55,7 +55,7 @@ class Home extends Component {
   }
 
   openModal(e){
-    debugger
+
     this.setState({ modalOpen: true, link: e.target.src });
   }
 

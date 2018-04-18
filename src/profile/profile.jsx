@@ -28,7 +28,6 @@ class Profile extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    debugger
   }
 
   renderComponent(){

@@ -6,7 +6,6 @@ import { getPostImages } from '../actions/images_actions';
 
 const mapStateToProps = ({ posts, images }, ownProps) => {
   const id = ownProps.match.params.postId;
-  debugger
   return {
     post: posts.posts[id],
     id: id,
