@@ -4,6 +4,7 @@ import Post from '../post/post';
 import { deleteAlbum } from '../aws/aws-exports';
 import Modal from 'react-modal';
 import 'react-quill/dist/quill.snow.css';
+import Image from '../image/image';
 
 const customStyles = {
   content : {
@@ -22,7 +23,7 @@ class Home extends Component {
 
     this.state = {
       modalIsOpen: false,
-      link: '',
+      info: {},
     };
 
     this.removePost = this.removePost.bind(this);
@@ -54,13 +55,19 @@ class Home extends Component {
     this.props.history.push(`/posts/${id}`);
   }
 
-  openModal(e){
-
-    this.setState({ modalOpen: true, link: e.target.src });
+  openModal(e, id, images, current){
+    this.setState({
+      modalOpen: true,
+      info: {
+        id,
+        images: images,
+        current
+      }
+    });
   }
 
   closeModal() {
-    this.setState({ modalOpen: false, link: '' });
+    this.setState({ modalOpen: false, info: {} });
   }
 
   postsToRender(){
@@ -89,9 +96,15 @@ class Home extends Component {
             </ul>
             <Modal
               contentLabel="Modal"
+              ariaHideApp={false}
               isOpen={this.state.modalOpen}
               onRequestClose={this.closeModal}
-              style={customStyles}>
+              style={customStyles}  >
+              <Image
+                id={this.state.info.id}
+                images={this.state.info.images}
+                current={this.state.info.current}
+                />
               <img src={this.state.link} />
             </Modal>
           </div>

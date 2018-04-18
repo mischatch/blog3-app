@@ -13,12 +13,12 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
     } else {
       return (
         <div>
-          { images.map((img) =>  <img
+          { images.map((img, i) =>  <img
             key={img.key}
             alt={img.key}
             width='150px'
             src={img.Location}
-            onClick={(e) => openModal(e)}/> )}
+            onClick={(e) => openModal(e, id, images, i)}/> )}
         </div>
       )
     }
