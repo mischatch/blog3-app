@@ -63,3 +63,36 @@
 .quill {
   margin-bottom: 15px;
 }
+
+.modal-gallery {
+  width: 450px;
+  display: flex;
+}
+
+.home-image-wrapper {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.home-image-wrapper > img {
+  width: inherit;
+  height: inherit;
+}
+
+.home-image-wrapper:nth-child(n+1){
+  margin-right: 10px
+}
+
+.home-images {
+  display: flex;
+  margin: 20px 0 20px 0;
+}
+
+#home-post-btns {
+  display: flex;
+  justify-content: flex-end;
+}

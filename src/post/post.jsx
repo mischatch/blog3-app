@@ -12,13 +12,17 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
       return null;
     } else {
       return (
-        <div>
-          { images.map((img, i) =>  <img
-            key={img.key}
-            alt={img.key}
-            width='150px'
-            src={img.Location}
-            onClick={(e) => openModal(e, id, images, i)}/> )}
+        <div className='home-images'>
+          { images.map((img, i) =>
+            <div key={img.key} className='home-image-wrapper'>
+              <img
+              key={img.key}
+              alt={img.key}
+              width='150px'
+              src={img.Location}
+              onClick={(e) => openModal(e, id, images, i)}/>
+            </div>
+        )}
         </div>
       )
     }
@@ -31,7 +35,7 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
       <h5 dangerouslySetInnerHTML={{__html:title}} />
       <p dangerouslySetInnerHTML={{__html:body}} />
       {postImages()}
-      <div className={display}>
+      <div id='home-post-btns' className={display}>
         <button onClick={() => removePost(id)}>✕</button>
         <button onClick={() => goToEditPost(id)}>✎</button>
       </div>

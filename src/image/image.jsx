@@ -15,7 +15,6 @@ class Image extends Component {
   showImage(){
     const { current } = this.state;
     const { images } = this.props;
-    debugger
     return(
       <img src={images[current].Location}/>
     );
@@ -41,7 +40,7 @@ class Image extends Component {
   render(){
     const { id, images, current } = this.props;
     return (
-      <div>
+      <div className='modal-gallery'>
         <button onClick={() => this.leaf('back')}>ᗏ</button>
         {this.showImage()}
         <button onClick={() => this.leaf('forw')}>ᐉ</button>
