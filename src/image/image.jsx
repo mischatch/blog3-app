@@ -9,8 +9,7 @@ class Image extends Component {
     };
 
     this.showImage = this.showImage.bind(this);
-    this.back = this.back.bind(this);
-    this.forw = this.forw.bind(this);
+    this.leaf = this.leaf.bind(this);
   }
 
   showImage(){
@@ -22,27 +21,30 @@ class Image extends Component {
     );
   }
 
-  back(){
+  leaf(dir){
     const { current } = this.state;
     const { images } = this.props;
-    let newCurr = (current - 1) < 0 ? images.length - 1 : current - 1;
-    this.setState({ current: newCurr });
+    let newCurr;
+    switch (dir){
+      case 'back':
+        newCurr = (current - 1) < 0 ? images.length - 1 : current - 1;
+        this.setState({ current: newCurr });
+        break;
+      case 'forw':
+        newCurr = (current + 1) % images.length;
+        this.setState({ current: newCurr });
+        break;
+    }
   }
 
-  forw(){
-    const { current } = this.state;
-    const { images } = this.props;
-    let newCurr = (current + 1) % images.length;
-    this.setState({ current: newCurr });
-  }
 
   render(){
     const { id, images, current } = this.props;
     return (
       <div>
-        <button onClick={this.back}>ᗏ</button>
+        <button onClick={() => this.leaf('back')}>ᗏ</button>
         {this.showImage()}
-        <button onClick={this.forw}>ᐉ</button>
+        <button onClick={() => this.leaf('forw')}>ᐉ</button>
       </div>
     );
   }
