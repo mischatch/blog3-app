@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import SessionReducer from './session';
 import postsReducer from './posts';
-import imagesReducer from './images';
 // import UsersReducer from './users';
 
 
@@ -9,7 +8,6 @@ import imagesReducer from './images';
 const rootReducer = combineReducers({
   session: SessionReducer,
   posts: postsReducer,
-  images: imagesReducer,
   // users: UsersReducer,
 });
 

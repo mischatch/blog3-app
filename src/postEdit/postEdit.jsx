@@ -82,13 +82,17 @@ class PostEdit extends React.Component {
 
   uploadImg(postID){
     const { files } = this.state.preview;
-    if(!this.state.images) this.setState({ images : [] });
+    if(!this.state.images) {
+      this.setState({ images : [] });
+    }
+
     files.forEach(async (file, i) => {
       const res = await upload(file, postID);
       this.setState({ images: this.state.images.concat(res) });
       const newPreview = this.state.preview;
       newPreview.imagePreviewUrl.shift();
       this.setState({ preview : newPreview });
+
       if(i === files.length - 1){
         const { title, body, images } = this.state;
         const post = { title, body, images };
