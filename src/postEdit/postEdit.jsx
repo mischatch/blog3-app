@@ -88,7 +88,7 @@ class PostEdit extends React.Component {
       this.setState({ images: this.state.images.concat(res) });
       const newPreview = this.state.preview;
       newPreview.imagePreviewUrl.shift();
-      this.setState({ preview : newPreview })
+      this.setState({ preview : newPreview });
       if(i === files.length - 1){
         const { title, body, images } = this.state;
         const post = { title, body, images };
@@ -105,7 +105,8 @@ class PostEdit extends React.Component {
     const imagesUpd = this.state.images.filter(image => image.Key !== id);
     this.setState({ images: this.state.images = imagesUpd }); // Update State
     deleteImage(id); // from aws s3
-    const post = this.state;
+    const { title, body, images } = this.state;
+    const post = { title, body, images };
     postEdit(post, key); // update firebase DB
   }
 

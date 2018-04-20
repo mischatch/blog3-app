@@ -45,6 +45,7 @@ export const getPostById = (id) => {
 export const getAllPosts = () => {
   return db.ref('posts').once('value')
     .then(res => {
+      debugger
       return res.val();
     })
     .catch(err => {
@@ -58,7 +59,11 @@ export const removePost = (id) => {
 };
 
 export const postEdit = (post, id) => {
-  return posts.child(id).update(post);
+  return posts.child(id).update(post)
+    .then((res) => {
+      debugger
+      return { post, key: id };
+    })
 };
 
 

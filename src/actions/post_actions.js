@@ -33,7 +33,10 @@ export const createPost = post => dispatch => {
 export const getAllPosts = () => dispatch => {
   return (
     db.getAllPosts()
-      .then((posts) => dispatch(receiveAllPosts(posts)))
+      .then((posts) => {
+        debugger
+        dispatch(receiveAllPosts(posts));
+      })
   );
 };
 
@@ -58,14 +61,19 @@ export const deletePost = id => dispatch => {
 export const editPost = (post, id) => dispatch => {
   return (
     db.postEdit(post, id)
-      // .then((post) => {
-      //   dispatch(receivePost(post));
-      // })
+      .then((post) => {
+        debugger
+        dispatch(receivePost(post));
+      })
   );
 };
 
 export const addDataToPost = (postUpd, postID) => dispatch => {
   return (
     db.postEdit(postUpd, postID)
+      .then((post) => {
+        debugger
+        dispatch(receivePost(post));
+      })
   );
 };

@@ -41,10 +41,11 @@ class Home extends Component {
        authUser ? onSetAuthUser(authUser) : onSetAuthUser(null);
        });
 
-    this.props.getAllPosts();
+    // this.props.getAllPosts();
   }
 
   componentWillMount(){
+    debugger
     this.props.getAllPosts();
   }
 
