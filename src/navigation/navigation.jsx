@@ -58,8 +58,8 @@ class Navigation extends React.Component{
 
   render(){
     return(
-      <div className=''>
-        <h5>Navigation</h5>
+      <div className='navigation'>
+        { /* <h5>Navigation</h5> */}
         { this.showLink() }
       </div>
     )

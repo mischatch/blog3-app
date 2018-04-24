@@ -1,4 +1,11 @@
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  margin-bottom: 130px !important;
+}
+
 .profile-container {
   display: flex;
 }
@@ -83,6 +90,10 @@
   height: inherit;
 }
 
+.home-image-wrapper > img:hover {
+  cursor: pointer;
+}
+
 .home-image-wrapper:nth-child(n+1){
   margin-right: 10px
 }
@@ -95,4 +106,15 @@
 #home-post-btns {
   display: flex;
   justify-content: flex-end;
+}
+.navigation {
+  position: fixed;
+  background-color: #fffffff0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 40px 0px 40px;
+  border-top: 2px solid #9a4dcb;
+  font-size: 20px;
+  line-height: 1.9;
 }

@@ -31,14 +31,15 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
 
   return (
     <div  className='post'>
-      <h6>{date}, {time}</h6>
-      <h5 dangerouslySetInnerHTML={{__html:title}} />
+      <h5>{date}, {time}</h5>
+      <p dangerouslySetInnerHTML={{__html:title}} />
       <p dangerouslySetInnerHTML={{__html:body}} />
       {postImages()}
       <div id='home-post-btns' className={display}>
         <button onClick={() => removePost(id)}>✕</button>
         <button onClick={() => goToEditPost(id)}>✎</button>
       </div>
+    
     </div>
   );
 };
