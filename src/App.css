@@ -1,9 +1,17 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 40px 60px;
   font-family: sans-serif;
   margin-bottom: 130px !important;
+}
+
+button {
+  width: 200px;
+}
+
+.hidden {
+  display: none;
 }
 
 .profile-container {
@@ -104,7 +112,7 @@ body {
 }
 
 #home-post-btns {
-  display: flex;
+  /* display: flex; */
   justify-content: flex-end;
 }
 .navigation {
@@ -117,4 +125,38 @@ body {
   border-top: 2px solid #9a4dcb;
   font-size: 20px;
   line-height: 1.9;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+  color: white;
+  background: #cfa8e6;
+  padding: 11px 20px;
+  font-size: 11px;
+  border-radius: 4px;
+  margin-right: 20px;
+  line-height: 1.6;
+  width: 200px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #9a4dcb;
+}
+
+.header {
+  border-bottom: 2px solid #9a4dcb;
 }

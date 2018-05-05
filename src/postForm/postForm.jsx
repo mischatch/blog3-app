@@ -127,11 +127,14 @@ class PostForm extends React.Component {
             onChange={html => this.handleChange({target: {value: html, name: 'body'}})}
             />
           <input
+            className='inputfile'
             type='file'
             name='image'
             onChange={this.handleFile}
             multiple
             />
+          <label htmlFor="image">Choose a file</label>
+
           <button
             type="submit"
             disabled={isInvalid}

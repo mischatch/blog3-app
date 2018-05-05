@@ -53,7 +53,7 @@ class Profile extends React.Component {
 
     return(
       <div>
-        <h1>Profile Page</h1>
+        <h1 className='header'>Profile Page</h1>
         <div className='profile-container'>
           <div className='profile-links'>
             <button value='passChange' onClick={this.componentPick}>Change Password</button>

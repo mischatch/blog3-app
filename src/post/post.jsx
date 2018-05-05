@@ -4,6 +4,7 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
   const { body, title, createdAt, images } = post;
   const date = new Date(createdAt).toLocaleDateString();
   const time = new Date(createdAt).toLocaleTimeString();
+  debugger
   const display = loggedIn? '' : 'hidden';
 
 
@@ -39,7 +40,7 @@ const Post = ({ id, post, removePost, goToEditPost, loggedIn, openModal }) => {
         <button onClick={() => removePost(id)}>✕</button>
         <button onClick={() => goToEditPost(id)}>✎</button>
       </div>
-    
+
     </div>
   );
 };
